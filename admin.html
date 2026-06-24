@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | تعديل الموقع</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">لوحة تحكم عربية سهلة لإدارة الموقع</p>
+        <h1>تعديل محتوى الموقع</h1>
+        <p>يمكنك تعديل البيانات، إظهار أو إخفاء الأقسام، إضافة أقسام جديدة، وتصدير نسخة احتياطية.</p>
+      </div>
+      <div class="admin-actions">
+        <a class="secondary-btn" href="index.html">عرض الموقع</a>
+        <button id="saveAll" class="primary-btn" type="button">حفظ كل التعديلات</button>
+        <button id="exportData" class="secondary-btn" type="button">تصدير JSON</button>
+        <button id="resetData" class="danger-btn" type="button">استعادة الافتراضي</button>
+      </div>
+    </header>
+
+    <section class="admin-card quick-panel">
+      <h2>تحكم سريع بالأقسام</h2>
+      <div class="toggle-grid">
+        <label><input type="checkbox" data-section-visible="about"> إظهار قسم النبذة</label>
+        <label><input type="checkbox" data-section-visible="experience"> إظهار قسم الخبرات</label>
+        <label><input type="checkbox" data-section-visible="education"> إظهار قسم التعليم</label>
+        <label><input type="checkbox" data-section-visible="certificates"> إظهار قسم الشهادات</label>
+        <label><input type="checkbox" data-section-visible="contact"> إظهار قسم التواصل</label>
+      </div>
+    </section>
+
+    <section class="admin-card">
+      <h2>البيانات الأساسية</h2>
+      <div class="form-grid">
+        <label>الاسم بالعربي<input data-field="brandNameAr" /></label>
+        <label>الاسم بالإنجليزي<input data-field="brandNameEn" /></label>
+        <label>الوصف المختصر عربي<input data-field="eyebrowAr" /></label>
+        <label>الوصف المختصر إنجليزي<input data-field="eyebrowEn" /></label>
+        <label>العنوان الرئيسي عربي<input data-field="heroNameAr" /></label>
+        <label>العنوان الرئيسي إنجليزي<input data-field="heroNameEn" /></label>
+        <label class="full">النص التعريفي عربي<textarea data-field="heroTextAr"></textarea></label>
+        <label class="full">النص التعريفي إنجليزي<textarea data-field="heroTextEn"></textarea></label>
+        <label>الموقع عربي<input data-field="locationAr" /></label>
+        <label>الموقع إنجليزي<input data-field="locationEn" /></label>
+        <label>البريد الإلكتروني<input data-field="email" type="email" /></label>
+        <label>رابط LinkedIn<input data-field="linkedin" /></label>
+        <label>رابط السيرة الذاتية عربي<input data-field="cvAr" placeholder="assets/docs/cv-ar.pdf" /></label>
+        <label>رابط السيرة الذاتية إنجليزي<input data-field="cvEn" placeholder="assets/docs/cv-en.pdf" /></label>
+        <label class="full">نص بطاقة الملف الشخصي عربي<textarea data-field="profileTextAr"></textarea></label>
+        <label class="full">نص بطاقة الملف الشخصي إنجليزي<textarea data-field="profileTextEn"></textarea></label>
+        <label class="full">نبذة مهنية عربي<textarea data-field="aboutAr"></textarea></label>
+        <label class="full">نبذة مهنية إنجليزي<textarea data-field="aboutEn"></textarea></label>
+      </div>
+    </section>
+
+    <section class="admin-card">
+      <div class="admin-section-title">
+        <h2>الأقسام الإضافية</h2>
+        <button id="addSection" class="secondary-btn" type="button">+ إضافة قسم جديد</button>
+      </div>
+      <p class="muted">أضف أي قسم تريده مثل: الخدمات، المشاريع، المهارات، الإنجازات. سيظهر القسم الجديد قبل قسم التواصل في الموقع.</p>
+      <div id="sectionEditor" class="section-editor"></div>
+    </section>
+
+    <section class="admin-card">
+      <div class="admin-section-title">
+        <h2>الشهادات</h2>
+        <button id="addCert" class="secondary-btn" type="button">+ إضافة شهادة</button>
+      </div>
+      <p class="muted">ضع اسم صورة الشهادة الموجودة داخل مجلد <code>assets/certificates</code> مثل: <code>cert-01.jpg</code></p>
+      <div id="certEditor" class="cert-editor"></div>
+    </section>
+  </main>
+  <script src="admin.js"></script>
+</body>
+</html>
