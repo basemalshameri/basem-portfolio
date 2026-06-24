@@ -17,3 +17,29 @@
 }
 .cv-downloads{margin-top:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px;border:1px solid rgba(57,208,197,.34);border-radius:22px;background:linear-gradient(135deg,rgba(57,208,197,.12),rgba(217,174,98,.10));box-shadow:0 14px 42px rgba(0,0,0,.18)}.cv-downloads span{font-weight:900;color:var(--accent2);margin-inline-end:4px}.cv-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 15px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid var(--line);color:var(--text);text-decoration:none;font-weight:900;transition:.22s}.cv-btn:hover{transform:translateY(-2px);border-color:rgba(57,208,197,.7);color:var(--accent)}.cv-btn::before{content:'⬇';font-size:14px}html[dir="ltr"] .cv-btn::before{content:'↓'}
 @media(max-width:850px){.cv-downloads{align-items:stretch}.cv-downloads span{width:100%}.cv-btn{justify-content:center;flex:1 1 180px}}
+/* Force profile card to the right in Arabic layout */
+html[dir="rtl"] .hero.section-grid{
+  grid-template-columns: .8fr 1.45fr;
+}
+
+html[dir="rtl"] .hero .profile-card{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+html[dir="rtl"] .hero .hero-copy{
+  grid-column: 2;
+  grid-row: 1;
+}
+
+@media(max-width:850px){
+  html[dir="rtl"] .hero.section-grid{
+    grid-template-columns: 1fr;
+  }
+
+  html[dir="rtl"] .hero .profile-card,
+  html[dir="rtl"] .hero .hero-copy{
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
