@@ -8,3 +8,4 @@
 
 افتح index.html لعرض الموقع.
 افتح admin.html لتعديل المحتوى.
+update
