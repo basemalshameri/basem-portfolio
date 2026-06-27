@@ -1,106 +1,582 @@
-const defaultContent = {
-  brandNameAr:'باسم عبدالغفور', brandNameEn:'Basem Alshameri',
-  eyebrowAr:'مدير عمليات | مشتريات ولوجستيات | تجارة إلكترونية', eyebrowEn:'Operations Manager | Purchasing & Logistics | E-commerce',
-  heroNameAr:'باسم عبدالغفور عبدالقوي أحمد', heroNameEn:'Basem Abdulghafoor Abdulqawi Ahmed',
-  heroTextAr:'مدير عمليات بخبرة تتجاوز 15 عاماً في إدارة العمليات التشغيلية، المشتريات الدولية، الخدمات اللوجستية، سلاسل الإمداد، إدارة البيانات، والتجارة الإلكترونية.',
-  heroTextEn:'Operations Manager with 15+ years of experience across operational management, international purchasing, logistics, supply chain, data management, and e-commerce.',
-  locationAr:'الدمام، المملكة العربية السعودية', locationEn:'Dammam, Saudi Arabia',
-  profileTextAr:'جاهز للتعاون في تطوير العمليات، التجارة الإلكترونية، المشتريات، واللوجستيات.',
-  profileTextEn:'Available for collaboration in operations, e-commerce, purchasing, and logistics.',
-  aboutAr:'أمتلك خبرة قوية في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، تطوير الاستراتيجيات الرقمية، وتحليل مؤشرات الأداء. أركز على تحويل الأهداف التشغيلية إلى إجراءات عملية قابلة للقياس والتحسين.',
-  aboutEn:'I specialize in optimizing operational processes, vendor management, shipping and import coordination, digital strategy development, and performance indicator analysis. My focus is converting operational goals into measurable and improvable execution plans.',
-  email:'basemalshameri6@gmail.com', linkedin:'https://linkedin.com/in/basem-al-shameri-b1a848395', cvAr:'assets/docs/cv-ar.pdf', cvEn:'assets/docs/cv-en.pdf'
-};
-const defaultCertificates = [
-  ['cert-01.jpg','academic','شهادة التخرج - جامعة ذمار','Graduation Certificate - Thamar University'],
-  ['cert-02.jpg','academic','Graduation Certificate - Thamar University','Graduation Certificate - Thamar University'],
-  ['cert-04.jpg','academic','دبلوم التنمية البشرية - أكاديمية العلوم','Human Resources Development Diploma - Sciences Academy'],
-  ['cert-05.jpg','professional','أساسيات التسويق الرقمي - Google','Digital Marketing Fundamentals - Google'],
-  ['cert-06.jpg','professional','Designing the Future of Work - UNSW Sydney','Designing the Future of Work - UNSW Sydney'],
-  ['cert-07.jpg','professional','Preparing to Manage Human Resources','Preparing to Manage Human Resources'],
-  ['cert-08.jpg','professional','Employee Feedback Survey with TypeForm','Employee Feedback Survey with TypeForm'],
-  ['cert-09.jpg','professional','Develop a Company Website with Wix','Develop a Company Website with Wix'],
-  ['cert-10.jpg','professional','Introduction to Microsoft Excel','Introduction to Microsoft Excel'],
-  ['cert-11.jpg','professional','Marketing Analytics Dashboard in Data Studio','Marketing Analytics Dashboard in Data Studio'],
-  ['cert-12.jpg','professional','Project Charter with Google Docs','Project Charter with Google Docs'],
-  ['cert-13.jpg','professional','Business Analysis Using Spreadsheets','Business Analysis Using Spreadsheets'],
-  ['cert-14.jpg','professional','Construct Stock Market Indices','Construct Stock Market Indices'],
-  ['cert-15.jpg','experience','شهادة خبرة - علم الدواء','Experience Certificate - Alam Al-Dawa'],
-  ['cert-16.jpg','experience','شهادة خبرة - تلد للتجارة','Experience Certificate - TELD Trading'],
-  ['cert-17.jpg','professional','Accounting for Non-Accountants','Accounting for Non-Accountants'],
-  ['cert-18.jpg','professional','Financial Feasibility Study for Business','Financial Feasibility Study for Business'],
-  ['cert-19.jpg','professional','Programming VBA using Excel','Programming VBA using Excel'],
-  ['cert-20.jpg','professional','Operations Management','Operations Management'],
-  ['cert-21.jpg','professional','Project Management Specialization','Project Management Specialization'],
-  ['cert-22.jpg','professional','Project Management Foundation','Project Management Foundation'],
-  ['cert-23.jpg','professional','Project Planning','Project Planning'],
-  ['cert-24.jpg','professional','Introduction to Python Programming','Introduction to Python Programming'],
-  ['cert-26.jpg','professional','The Project: From Execution to Closure','The Project: From Execution to Closure'],
-  ['cert-37.jpg','professional','Selling Smarter','Selling Smarter'],
-  ['cert-38.jpg','professional','Introduction in Artificial Intelligence','Introduction in Artificial Intelligence'],
-  ['cert-49.jpg','professional','إدارة المشتريات - منصة معارف','Purchasing Management - M3aarf'],
-  ['cert-51.jpg','professional','برنامج المشتريات واللوجستيات - DisasterReady','Purchasing & Logistics Program - DisasterReady'],
-  ['cert-52.jpg','professional','أساسيات المهارات القيادية','Leadership Skills Essentials'],
-  ['cert-54.jpg','professional','Effective Communication in the Workplace','Effective Communication in the Workplace']
-];
-for(let i=1;i<=60;i++){const name=`cert-${String(i).padStart(2,'0')}.jpg`;if(!defaultCertificates.some(c=>c[0]===name)){defaultCertificates.push([name,'professional',`شهادة مهنية رقم ${i}`,`Professional Certificate ${i}`]);}}
-function readJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key))||fallback}catch{return fallback}}
-const savedContent=readJSON('portfolioContent',{});
-if(Object.values(savedContent).some(v=>String(v).includes(['موقع','شخصي','احترافي'].join(' '))||String(v).includes(['Professional','Personal','Website'].join(' ')))){localStorage.removeItem('portfolioContent');}
-const siteContent={...defaultContent,...readJSON('portfolioContent',{})};
-const sectionVisibility={about:true,experience:true,education:true,certificates:true,contact:true,...readJSON('portfolioVisibility',{})};
-const customSections=readJSON('portfolioSections',[]);
-let certificates=readJSON('portfolioCertificates',defaultCertificates);
-let currentLang='ar', activeFilter='all', currentIndex=0;
-const grid=document.getElementById('certGrid'), search=document.getElementById('certSearch');
-function t(ar,en){return currentLang==='ar'?ar:en}
 
-function applySectionVisibility(){
-  Object.entries(sectionVisibility).forEach(([id,visible])=>{
-    const section=document.getElementById(id);
-    if(section) section.style.display=visible===false?'none':'';
-    document.querySelectorAll(`.nav a[href="#${id}"]`).forEach(a=>a.style.display=visible===false?'none':'');
+const defaultCertificates = [
+  {
+    "name": "بكالوريوس لغة إنجليزية",
+    "issuer": "جامعة ذمار",
+    "date": "2009",
+    "category": "المؤهلات الأكاديمية"
+  },
+  {
+    "name": "دبلوم التنمية البشرية",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "أساسيات التسويق الرقمي",
+    "issuer": "Google",
+    "date": "2022",
+    "category": "التسويق الرقمي"
+  },
+  {
+    "name": "Designing the Future of Work",
+    "issuer": "UNSW Sydney / Coursera",
+    "date": "2022",
+    "category": "الإدارة والعمل"
+  },
+  {
+    "name": "Preparing to Manage Human Resources",
+    "issuer": "University of Minnesota / Coursera",
+    "date": "2022",
+    "category": "الموارد البشرية"
+  },
+  {
+    "name": "Create an Employee Feedback Survey with TypeForm",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "الموارد البشرية"
+  },
+  {
+    "name": "Develop a Company Website with Wix",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "المواقع الرقمية"
+  },
+  {
+    "name": "Introduction to Microsoft Excel",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل البيانات"
+  },
+  {
+    "name": "Create a Custom Marketing Analytics Dashboard in Data Studio",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل البيانات"
+  },
+  {
+    "name": "Create a Project Charter with Google Docs",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Introduction to Business Analysis Using Spreadsheets: Basics",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل الأعمال"
+  },
+  {
+    "name": "Construct Stock Market Indices",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "International Commercial Correspondence",
+    "issuer": "عالم الدواء للتجارة والاستثمار",
+    "date": "2009",
+    "category": "الخبرة العملية"
+  },
+  {
+    "name": "التوزيع والتحصيل",
+    "issuer": "شركة تلد للتجارة العامة",
+    "date": "2012",
+    "category": "الخبرة العملية"
+  },
+  {
+    "name": "Accounting for Non-Accountants",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "How to Do a Financial Feasibility Study for a Business",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "Programming VBA using Excel",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "Excel والبرمجة"
+  },
+  {
+    "name": "Operations Management",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة العمليات"
+  },
+  {
+    "name": "Project Management",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Project Management Foundation",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Project Planning",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "The Project: From Execution to Closure",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Introduction to Python Programming",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "البرمجة"
+  },
+  {
+    "name": "Safe Investments During An Economic Crisis",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "إدارة المشاريع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "أساسيات المشروع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "إدارة العمليات",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة العمليات"
+  },
+  {
+    "name": "الاستثمار الآمن في الأزمات الاقتصادية",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "المشروع: من التنفيذ إلى الإغلاق",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "البرمجة باستخدام Excel VBA",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "Excel والبرمجة"
+  },
+  {
+    "name": "تخطيط المشروع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "المحاسبة لغير المحاسبين",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "كيفية عمل دراسة الجدوى المالية للمشروع",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "مقدمة إلى البرمجة باستخدام لغة بايثون",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "البرمجة"
+  },
+  {
+    "name": "Selling Smarter",
+    "issuer": "إدراك",
+    "date": "2024",
+    "category": "المبيعات"
+  },
+  {
+    "name": "Introduction in Artificial Intelligence",
+    "issuer": "إدراك",
+    "date": "2026",
+    "category": "الذكاء الاصطناعي"
+  },
+  {
+    "name": "مقدمة إلى الذكاء الاصطناعي",
+    "issuer": "إدراك",
+    "date": "2026",
+    "category": "الذكاء الاصطناعي"
+  },
+  {
+    "name": "البيع بذكاء",
+    "issuer": "إدراك",
+    "date": "2024",
+    "category": "المبيعات"
+  },
+  {
+    "name": "مهارات النجاح",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "استخدام لينكدإن للوصول للفرص المهنية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "فهم سوق العمل",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "المقابلة الشخصية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "السيرة الذاتية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "التخطيط لبناء مسار مهني ناجح",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "البحث واكتشاف الفرص",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "الإعداد المهني",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "إدارة المشتريات",
+    "issuer": "منصة معارف",
+    "date": "2024",
+    "category": "المشتريات"
+  },
+  {
+    "name": "برنامج المشتريات واللوجستيات",
+    "issuer": "DisasterReady",
+    "date": "2024",
+    "category": "المشتريات واللوجستيات"
+  },
+  {
+    "name": "أساسيات المهارات القيادية",
+    "issuer": "DisasterReady",
+    "date": "2025",
+    "category": "القيادة"
+  },
+  {
+    "name": "أساسيات البحث عن منح",
+    "issuer": "DisasterReady",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "Effective Communication in the Workplace",
+    "issuer": "OpenLearn",
+    "date": "2025",
+    "category": "الاتصال"
+  },
+  {
+    "name": "Corporate Governance Essentials: From Theory to Practice",
+    "issuer": "OpenLearn Create",
+    "date": "2025",
+    "category": "الحوكمة"
+  },
+  {
+    "name": "المهارات الضرورية في سوق العمل",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "التخطيط الإستراتيجي",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "إدارة الوقت",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "فنون التعامل",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "إدارة الاجتماعات",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "طرق التدريس",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "التعليم والتدريب"
+  },
+  {
+    "name": "القيادة وصناعة القائد",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "القيادة"
+  },
+  {
+    "name": "فن الإلقاء والخطابة",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الاتصال"
+  },
+  {
+    "name": "مهارات التواصل والتأثير",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الاتصال"
+  }
+];
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('nav');
+if (menuBtn) menuBtn.onclick = () => nav.classList.toggle('open');
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('light');
+
+let currentLang = 'ar';
+document.getElementById('langToggle').onclick = () => {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  document.getElementById('langToggle').textContent = currentLang === 'ar' ? 'EN' : 'AR';
+  document.querySelectorAll('[data-ar][data-en]').forEach(el => el.textContent = el.dataset[currentLang]);
+};
+
+const reveal = () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('visible');
+  });
+};
+window.addEventListener('scroll', reveal);
+reveal();
+
+function getPortfolioData(){
+  try { return JSON.parse(localStorage.getItem('basemPortfolioData') || '{}'); }
+  catch(e){ return {}; }
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function renderCustomSections(sections){
+  const wrap = document.getElementById('customSections');
+  if (!wrap) return;
+  wrap.innerHTML = (sections || []).filter(s => s && s.title).map((s, i) => `
+    <section class="section custom-section reveal visible" id="custom-${i+1}">
+      <div class="section-title"><p class="eyebrow">${escapeHtml(s.label || 'Custom Section')}</p><h2>${escapeHtml(s.title)}</h2></div>
+      <div class="panel"><p>${escapeHtml(s.content || '').replace(/\n/g, '<br>')}</p></div>
+    </section>
+  `).join('');
+}
+
+function renderExperiences(experiences){
+  const wrap = document.querySelector('#experience .timeline');
+  if (!wrap || !Array.isArray(experiences) || experiences.length === 0) return;
+  wrap.innerHTML = experiences.map(x => `
+    <article><span>${escapeHtml(x.period || '')}</span><h3>${escapeHtml(x.title || '')}</h3><p>${escapeHtml(x.description || '').replace(/\n/g,'<br>')}</p></article>
+  `).join('');
+}
+
+function renderSkills(skills){
+  const wrap = document.querySelector('#skills .skills-grid');
+  if (!wrap || !Array.isArray(skills) || skills.length === 0) return;
+  wrap.innerHTML = skills.map(skill => `<span>${escapeHtml(skill)}</span>`).join('');
+}
+
+function renderCards(selector, items){
+  const wrap = document.querySelector(selector);
+  if (!wrap || !Array.isArray(items) || items.length === 0) return;
+  wrap.innerHTML = items.map(item => `
+    <article><h3>${escapeHtml(item.title || '')}</h3><p>${escapeHtml(item.description || '').replace(/\n/g,'<br>')}</p></article>
+  `).join('');
+}
+
+
+
+function renderCertificates(data){
+  const wrap = document.getElementById('certificatesGrid');
+  if (!wrap) return;
+  const certificates = Array.isArray(data.certificates) && data.certificates.length ? data.certificates : defaultCertificates;
+  const title = document.getElementById('certificatesTitle');
+  if (title) title.textContent = (data.certificatesTitle || certificates.length + ' شهادة احترافية');
+  const intro = document.getElementById('certificatesIntro');
+  if (intro && data.certificatesIntro) intro.textContent = data.certificatesIntro;
+  const btn = document.getElementById('certDownloadBtn');
+  if (btn) {
+    btn.href = data.certificatesFile || 'assets/certificates/Basem_Certificates_61.pdf';
+    btn.textContent = data.certificatesButton || 'تحميل الشهادات';
+  }
+  renderCertificateFilters(certificates);
+  displayCertificates(certificates, 'all');
+}
+
+
+function getCertificateGroup(category){
+  const cat = String(category || '').trim();
+  if (!cat) return 'مهنية';
+  if (['أكاديمية','اكاديمية','الشهادات الأكاديمية','المؤهلات الأكاديمية'].includes(cat)) return 'أكاديمية';
+  if (['خبرات','خبرة','شهادات الخبرة','الخبرة العملية'].includes(cat)) return 'خبرات';
+  if (cat.includes('أكاديم') || cat.includes('اكاديم') || cat.includes('مؤهل') || cat.includes('بكالوريوس') || cat.includes('دبلوم')) return 'أكاديمية';
+  if (cat.includes('خبرة') || cat.includes('الخبرة')) return 'خبرات';
+  return 'مهنية';
+}
+
+function displayCertificates(certificates, selectedGroup){
+  const wrap = document.getElementById('certificatesGrid');
+  if (!wrap) return;
+  const filtered = selectedGroup === 'all' ? certificates : certificates.filter(c => getCertificateGroup(c.category) === selectedGroup);
+  wrap.innerHTML = filtered.map((c, i) => {
+    const group = getCertificateGroup(c.category);
+    return `
+    <article class="certificate-card" data-group="${escapeHtml(group)}">
+      <span class="cert-num">${String(i + 1).padStart(2,'0')}</span>
+      <h3>${escapeHtml(c.name || '')}</h3>
+      <p>${escapeHtml(c.issuer || '')}</p>
+      <small>${escapeHtml(group)}${c.category ? ' • ' + escapeHtml(c.category) : ''}${c.date ? ' • ' + escapeHtml(c.date) : ''}</small>
+    </article>
+  `}).join('') || '<p class="empty-note">لا توجد شهادات في هذا التصنيف حالياً.</p>';
+}
+
+function renderCertificateFilters(certificates){
+  const filters = document.getElementById('certificateFilters');
+  if (!filters) return;
+  const buttons = [
+    {key:'all', label:'الكل', count:certificates.length},
+    {key:'أكاديمية', label:'أكاديمية', count:certificates.filter(c => getCertificateGroup(c.category) === 'أكاديمية').length},
+    {key:'مهنية', label:'مهنية', count:certificates.filter(c => getCertificateGroup(c.category) === 'مهنية').length},
+    {key:'خبرات', label:'خبرات', count:certificates.filter(c => getCertificateGroup(c.category) === 'خبرات').length}
+  ];
+  filters.innerHTML = buttons.map((b, index) => `<button class="filter-btn ${index === 0 ? 'active' : ''}" data-group="${escapeHtml(b.key)}">${escapeHtml(b.label)} <span>${b.count}</span></button>`).join('');
+  filters.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      displayCertificates(certificates, btn.dataset.group);
+    });
   });
 }
-function renderCustomSections(){
-  document.querySelectorAll('.custom-added-section').forEach(el=>el.remove());
-  const contact=document.getElementById('contact');
-  if(!contact) return;
-  customSections.filter(s=>s && s.visible!==false).forEach((s,i)=>{
-    const sec=document.createElement('section');
-    sec.className='section reveal custom-added-section visible';
-    sec.innerHTML=`<div class="section-heading"><span>${String(i+6).padStart(2,'0')}</span><h2 data-ar="${escapeAttr(s.titleAr||'قسم إضافي')}" data-en="${escapeAttr(s.titleEn||'Extra Section')}">${t(s.titleAr||'قسم إضافي',s.titleEn||'Extra Section')}</h2></div><div class="info-card"><p data-ar="${escapeAttr(s.bodyAr||'')}" data-en="${escapeAttr(s.bodyEn||'')}">${t(s.bodyAr||'',s.bodyEn||'')}</p></div>`;
-    contact.parentNode.insertBefore(sec,contact);
+
+function normalizeUrl(value){
+  const v = String(value || '').trim();
+  if (!v) return '#';
+  if (/^(https?:|mailto:|tel:|whatsapp:)/i.test(v)) return v;
+  if (/^[+0-9 ()-]+$/.test(v)) return 'tel:' + v.replace(/[^+0-9]/g, '');
+  if (v.includes('@') && !v.includes(' ')) return 'mailto:' + v;
+  if (v.includes('.')) return 'https://' + v.replace(/^www\./i, 'www.');
+  return v;
+}
+
+function renderContactFields(data){
+  const wrap = document.getElementById('contactFields');
+  if (!wrap) return;
+  const fallback = [
+    {label:'الموقع', value:'الدمام، المملكة العربية السعودية', link:''},
+    {label:'الجوال', value:'+966504319217', link:'tel:+966504319217'},
+    {label:'البريد', value:data.email || 'basemalshameri6@gmail.com', link:'mailto:' + (data.email || 'basemalshameri6@gmail.com')},
+    {label:'LinkedIn', value:'www.linkedin.com/in/basem-al-shameri-b1a848395', link:data.linkedin || 'https://www.linkedin.com/in/basem-al-shameri-b1a848395'}
+  ];
+  const fields = Array.isArray(data.contactFields) && data.contactFields.length ? data.contactFields : fallback;
+  wrap.innerHTML = fields.filter(f => f && (f.label || f.value)).map(f => {
+    const label = escapeHtml(f.label || '');
+    const value = escapeHtml(f.value || '');
+    const link = String(f.link || '').trim();
+    const autoLink = normalizeUrl(link || f.value);
+    const content = autoLink && autoLink !== '#' ? `<a href="${escapeHtml(autoLink)}" target="_blank" rel="noopener">${value}</a>` : value;
+    return `<p><strong>${label}:</strong> ${content}</p>`;
+  }).join('');
+}
+
+
+function hexToRgba(hex, opacity){
+  const h=String(hex||'#111827').replace('#','');
+  const full=h.length===3?h.split('').map(x=>x+x).join(''):h;
+  const n=parseInt(full,16);
+  const r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+  const a=Math.max(0,Math.min(100,Number(opacity)||80))/100;
+  return `rgba(${r},${g},${b},${a})`;
+}
+function applyDesign(design){
+  const d={bg:'#090d18',bg2:'#12345b',panel:'#111827',text:'#f8fafc',muted:'#a8b3c7',gold:'#d6a94a',blue:'#46b4ff',button:'#d6a94a',backgroundImage:'',panelOpacity:80,radius:28,animations:'on',...(design||{})};
+  const root=document.documentElement;
+  root.style.setProperty('--bg',d.bg);
+  root.style.setProperty('--panel',hexToRgba(d.panel,d.panelOpacity));
+  root.style.setProperty('--panel2',d.panel);
+  root.style.setProperty('--text',d.text);
+  root.style.setProperty('--muted',d.muted);
+  root.style.setProperty('--gold',d.gold);
+  root.style.setProperty('--blue',d.blue);
+  root.style.setProperty('--button',d.button);
+  root.style.setProperty('--radius',`${Number(d.radius)||28}px`);
+  const bgImage=d.backgroundImage?`, url('${String(d.backgroundImage).replace(/'/g,'')}')`:'';
+  document.body.style.background=`radial-gradient(circle at top left, ${d.bg2} 0, ${d.bg} 38%, #050812 100%)${bgImage}`;
+  document.body.style.backgroundSize=d.backgroundImage?'cover':'auto';
+  document.body.style.backgroundAttachment=d.backgroundImage?'fixed':'scroll';
+  document.body.classList.toggle('no-motion', d.animations==='off');
+}
+
+function applyPortfolioData(){
+  const data = getPortfolioData();
+  applyDesign(data.design);
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    const key = el.dataset.edit;
+    if (data[key]) el.textContent = data[key];
   });
+  if (data.linkedin) {
+    document.querySelectorAll('a[href*="linkedin.com/in"]').forEach(a => a.href = data.linkedin);
+  }
+  if (data.email) {
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => { a.href = 'mailto:' + data.email; a.textContent = data.email; });
+  }
+  renderExperiences(data.experiences);
+  renderSkills(data.skills);
+  renderCards('#achievementsGrid', data.achievements);
+  renderCards('#projectsGrid', data.projects);
+  renderContactFields(data);
+  renderCertificates(data);
+  renderCustomSections(data.sections);
 }
-function escapeAttr(str=''){
-  return String(str).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-}
-function setText(el, ar, en){if(!el)return;el.dataset.ar=ar;el.dataset.en=en;el.textContent=t(ar,en)}
-function applyEditableContent(){
-  applySectionVisibility();
-  renderCustomSections();
-  setText(document.querySelector('.brand strong'),siteContent.brandNameAr,siteContent.brandNameEn);
-  setText(document.querySelector('.eyebrow'),siteContent.eyebrowAr,siteContent.eyebrowEn);
-  setText(document.querySelector('.hero h1'),siteContent.heroNameAr,siteContent.heroNameEn);
-  setText(document.querySelector('.hero-text'),siteContent.heroTextAr,siteContent.heroTextEn);
-  setText(document.querySelector('.profile-card h2'),siteContent.locationAr,siteContent.locationEn);
-  setText(document.querySelector('.contact-card span'),siteContent.locationAr,siteContent.locationEn);
-  setText(document.querySelector('.profile-card p'),siteContent.profileTextAr,siteContent.profileTextEn);
-  setText(document.querySelector('#about .about-grid > p'),siteContent.aboutAr,siteContent.aboutEn);
-  const email=document.querySelector('.contact-card a[href^="mailto:"]'); if(email){email.textContent=siteContent.email; email.href=`mailto:${siteContent.email}`;}
-  const linkedin=[...document.querySelectorAll('.contact-card a')].find(a=>a.textContent.trim()==='LinkedIn'); if(linkedin) linkedin.href=siteContent.linkedin;
-  const cvAr=document.querySelector('[data-cv="ar"]'); if(cvAr) cvAr.href=siteContent.cvAr||'assets/docs/cv-ar.pdf';
-  const cvEn=document.querySelector('[data-cv="en"]'); if(cvEn) cvEn.href=siteContent.cvEn||'assets/docs/cv-en.pdf';
-}
-function applyLanguage(){document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';document.getElementById('langToggle').textContent=currentLang==='ar'?'English':'العربية';applyEditableContent();document.querySelectorAll('[data-ar]').forEach(el=>{el.textContent=t(el.dataset.ar,el.dataset.en)});document.querySelectorAll('[data-ar-placeholder]').forEach(el=>{el.placeholder=t(el.dataset.arPlaceholder,el.dataset.enPlaceholder)});renderCertificates()}
-function filtered(){const q=(search.value||'').toLowerCase().trim();return certificates.filter(c=>(activeFilter==='all'||c[1]===activeFilter)&&(`${c[2]} ${c[3]}`.toLowerCase().includes(q)))}
-function renderCertificates(){const items=filtered();grid.innerHTML='';items.forEach((c)=>{const originalIndex=certificates.indexOf(c);const card=document.createElement('article');card.className='cert-card';card.tabIndex=0;card.innerHTML=`<div class="cert-thumb"><img src="assets/certificates/${c[0]}" alt="${t(c[2],c[3])}" loading="lazy" onerror="this.closest('.cert-card').style.display='none'"></div><div class="cert-meta"><small>${t(categoryAr(c[1]),categoryEn(c[1]))}</small><h3>${t(c[2],c[3])}</h3></div>`;card.addEventListener('click',()=>openLightbox(originalIndex));card.addEventListener('keydown',e=>{if(e.key==='Enter')openLightbox(originalIndex)});grid.appendChild(card);});}
-function categoryAr(c){return c==='academic'?'أكاديمية':c==='experience'?'خبرة':'مهنية'}function categoryEn(c){return c==='academic'?'Academic':c==='experience'?'Experience':'Professional'}
-function openLightbox(i){currentIndex=i;const c=certificates[i];document.getElementById('lightboxImg').src=`assets/certificates/${c[0]}`;document.getElementById('lightboxCaption').textContent=t(c[2],c[3]);document.getElementById('lightbox').classList.add('open');document.getElementById('lightbox').setAttribute('aria-hidden','false')}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.getElementById('lightbox').setAttribute('aria-hidden','true')}
-function move(step){currentIndex=(currentIndex+step+certificates.length)%certificates.length;openLightbox(currentIndex)}
-document.getElementById('langToggle').addEventListener('click',()=>{currentLang=currentLang==='ar'?'en':'ar';applyLanguage()});
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeFilter=btn.dataset.filter;renderCertificates()}));
-search.addEventListener('input',renderCertificates);document.getElementById('closeLightbox').addEventListener('click',closeLightbox);document.getElementById('prevCert').addEventListener('click',()=>move(-1));document.getElementById('nextCert').addEventListener('click',()=>move(1));document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(document.getElementById('lightbox').classList.contains('open')&&e.key==='ArrowRight')move(document.documentElement.dir==='rtl'?-1:1);if(document.getElementById('lightbox').classList.contains('open')&&e.key==='ArrowLeft')move(document.documentElement.dir==='rtl'?1:-1)});
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));applyLanguage();
+
+applyPortfolioData();

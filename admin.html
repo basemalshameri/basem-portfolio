@@ -3,92 +3,652 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة التحكم | تعديل الموقع</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>لوحة التحكم الخاصة | باسم عبدالغفور</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="admin.css" />
+  <style>
+    .admin-wrap{max-width:1180px;margin:auto;padding:92px 6vw 50px}.login-box,.admin-panel{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow)}
+    .login-box{max-width:470px;margin:70px auto}.admin-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}.tab-btn{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);border-radius:999px;padding:11px 16px;cursor:pointer;font-family:inherit}.tab-btn.active{background:linear-gradient(135deg,var(--gold),#fff1b4);color:#111}
+    .tab{display:none}.tab.active{display:block}.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.field{display:flex;flex-direction:column;gap:8px}.field label{font-weight:800}.field input,.field textarea,.field select{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:#111;font-family:inherit}.field textarea{min-height:120px}.admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.danger{background:#461d24;color:#fff;border:1px solid #9f394b}.section-item{border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;background:rgba(255,255,255,.04)}.small-note{color:var(--muted);line-height:1.9}.hidden{display:none!important}.success{background:rgba(40,170,100,.12);border:1px solid rgba(40,170,100,.35);padding:12px;border-radius:14px;margin-top:14px}.code{direction:ltr;text-align:left;background:#07111f;border:1px solid var(--line);border-radius:16px;padding:14px;white-space:pre-wrap;color:#dbeafe}
+  </style>
 </head>
-<body class="admin-body">
-<script>
-const password = "711044055";
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">BA</a>
+    <strong>لوحة التحكم الخاصة</strong>
+    <a class="secondary-btn" href="index.html">رجوع للموقع</a>
+  </header>
 
-const userPassword = prompt("أدخل كلمة مرور لوحة التحكم");
+  <main class="admin-wrap">
+    <section id="loginBox" class="login-box">
+      <p class="eyebrow">Private Admin</p>
+      <h1>تسجيل دخول لوحة التحكم</h1>
+      <p class="small-note">هذه الصفحة غير ظاهرة في الموقع العام. كلمة المرور الافتراضية: <b>Basem@2026</b>. غيّرها من تبويب الحماية بعد الدخول.</p>
+      <div class="field"><label>كلمة المرور</label><input id="passwordInput" type="password" placeholder="أدخل كلمة المرور"></div>
+      <div class="admin-actions"><button class="primary-btn" id="loginBtn">دخول</button></div>
+      <div id="loginMsg"></div>
+    </section>
 
-if (userPassword !== password) {
-    alert("كلمة المرور غير صحيحة");
-    window.location.href = "index.html";
-}
-</script>
-  <main class="admin-shell">
-    <header class="admin-header">
-      <div>
-        <p class="eyebrow">لوحة تحكم عربية سهلة لإدارة الموقع</p>
-        <h1>تعديل محتوى الموقع</h1>
-        <p>يمكنك تعديل البيانات، إظهار أو إخفاء الأقسام، إضافة أقسام جديدة، وتصدير نسخة احتياطية.</p>
+    <section id="adminPanel" class="admin-panel hidden">
+      <p class="eyebrow">Admin Panel</p>
+      <h1>إدارة محتوى الموقع بالكامل</h1>
+      <p class="small-note">يمكنك تعديل الخبرات، المهارات، المشاريع، الإنجازات، وإضافة أقسام جديدة تظهر قبل قسم الشهادات.</p>
+
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="basic">البيانات الأساسية</button>
+        <button class="tab-btn" data-tab="about">النبذة والإحصائيات</button>
+        <button class="tab-btn" data-tab="links">بيانات التواصل والملفات</button>
+        <button class="tab-btn" data-tab="experiences">الخبرات العملية</button>
+        <button class="tab-btn" data-tab="skillsAdmin">المهارات الأساسية</button>
+        <button class="tab-btn" data-tab="achievementsAdmin">الإنجازات</button>
+        <button class="tab-btn" data-tab="projectsAdmin">المشاريع</button>
+        <button class="tab-btn" data-tab="sections">إضافة أقسام قبل الشهادات</button>
+        <button class="tab-btn" data-tab="design">تخصيص الألوان والخلفية</button>
+        <button class="tab-btn" data-tab="certificatesAdmin">الشهادات</button>
+        <button class="tab-btn" data-tab="security">الحماية</button>
+        <button class="tab-btn" data-tab="backup">نسخ احتياطي</button>
       </div>
+
+      <div id="basic" class="tab active">
+        <div class="form-grid">
+          <div class="field"><label>الاسم</label><input id="name"></div>
+          <div class="field"><label>المسمى الوظيفي</label><input id="title"></div>
+          <div class="field"><label>عنوان البطاقة الصغيرة</label><input id="cardTitle"></div>
+          <div class="field"><label>النص أسفل البطاقة</label><input id="cardSubtitle"></div>
+          <div class="field"><label>النص الرئيسي في الصفحة الأولى</label><textarea id="heroText"></textarea></div>
+        </div>
+      </div>
+
+      <div id="about" class="tab">
+        <div class="form-grid">
+          <div class="field"><label>نبذة احترافية</label><textarea id="aboutText"></textarea></div>
+          <div class="field"><label>سنوات الخبرة</label><input id="yearsStat"></div>
+          <div class="field"><label>عدد الشهادات</label><input id="certStat"></div>
+          <div class="field"><label>المناصب والخبرات</label><input id="rolesStat"></div>
+        </div>
+      </div>
+
+      <div id="links" class="tab">
+        <p class="small-note">تحكم كامل في بيانات التواصل أسفل الصفحة. يمكنك تعديل الجوال، LinkedIn، البريد، الموقع، وإضافة أي حقول جديدة مثل واتساب أو GitHub.</p>
+        <div class="form-grid">
+          <div class="field"><label>رابط LinkedIn الأساسي</label><input id="linkedin"></div>
+          <div class="field"><label>البريد الإلكتروني الأساسي</label><input id="email"></div>
+        </div>
+        <h3 style="margin-top:24px">حقول بيانات التواصل</h3>
+        <div id="contactFieldsList"></div>
+        <button class="secondary-btn" id="addContactFieldBtn">+ إضافة حقل تواصل جديد</button>
+        <div class="form-grid" style="margin-top:22px">
+          <div class="field"><label>رفع صورة شخصية جديدة</label><input type="file" disabled><small class="small-note">في نسخة GitHub/Vercel الثابتة يتم استبدال الصورة داخل assets/img/profile.jpg ثم رفع الملفات.</small></div>
+          <div class="field"><label>رفع CV أو شهادة</label><input type="file" disabled><small class="small-note">الرفع الحقيقي يحتاج قاعدة بيانات/تخزين مثل Supabase.</small></div>
+        </div>
+      </div>
+
+      <div id="experiences" class="tab">
+        <p class="small-note">تحكم كامل في قسم الخبرات العملية: إضافة، تعديل، حذف، وترتيب يدوي بالسحب غير مضاف حاليًا؛ يمكنك القص واللصق لتغيير الترتيب.</p>
+        <div id="experiencesList"></div>
+        <button class="secondary-btn" id="addExperienceBtn">+ إضافة خبرة عملية</button>
+      </div>
+
+      <div id="skillsAdmin" class="tab">
+        <p class="small-note">تحكم كامل في قسم المهارات الأساسية.</p>
+        <div id="skillsList"></div>
+        <button class="secondary-btn" id="addSkillBtn">+ إضافة مهارة</button>
+      </div>
+
+      <div id="achievementsAdmin" class="tab">
+        <p class="small-note">تحكم كامل في بطاقات الإنجازات.</p>
+        <div id="achievementsList"></div>
+        <button class="secondary-btn" id="addAchievementBtn">+ إضافة إنجاز</button>
+      </div>
+
+      <div id="projectsAdmin" class="tab">
+        <p class="small-note">تحكم كامل في بطاقات المشاريع.</p>
+        <div id="projectsList"></div>
+        <button class="secondary-btn" id="addProjectBtn">+ إضافة مشروع</button>
+      </div>
+
+      <div id="sections" class="tab">
+        <p class="small-note">هذه الأقسام ستظهر تلقائيًا في الموقع قبل قسم الشهادات.</p>
+        <div id="sectionsList"></div>
+        <button class="secondary-btn" id="addSectionBtn">+ إضافة قسم جديد</button>
+      </div>
+
+
+      <div id="design" class="tab">
+        <p class="small-note">تحكم مباشر في ألوان الصفحة والخلفية. بعد الحفظ افتح الموقع لمشاهدة التغييرات.</p>
+        <div class="form-grid">
+          <div class="field"><label>لون الخلفية الأساسي</label><input id="designBg" type="color"></div>
+          <div class="field"><label>لون الخلفية الثاني</label><input id="designBg2" type="color"></div>
+          <div class="field"><label>لون البطاقات</label><input id="designPanel" type="color"></div>
+          <div class="field"><label>لون النص الأساسي</label><input id="designText" type="color"></div>
+          <div class="field"><label>لون النص الفرعي</label><input id="designMuted" type="color"></div>
+          <div class="field"><label>اللون الذهبي / الرئيسي</label><input id="designGold" type="color"></div>
+          <div class="field"><label>اللون الأزرق / الثانوي</label><input id="designBlue" type="color"></div>
+          <div class="field"><label>لون الأزرار</label><input id="designButton" type="color"></div>
+          <div class="field"><label>صورة الخلفية URL اختياري</label><input id="designBackgroundImage" placeholder="assets/img/background.jpg أو رابط صورة"></div>
+          <div class="field"><label>شفافية البطاقات من 0 إلى 100</label><input id="designPanelOpacity" type="number" min="0" max="100"></div>
+          <div class="field"><label>استدارة الحواف px</label><input id="designRadius" type="number" min="0" max="60"></div>
+          <div class="field"><label>تشغيل الحركات</label><select id="designAnimations"><option value="on">تشغيل</option><option value="off">إيقاف</option></select></div>
+        </div>
+        <div class="admin-actions">
+          <button class="secondary-btn" id="darkPresetBtn" type="button">قالب داكن فاخر</button>
+          <button class="secondary-btn" id="lightPresetBtn" type="button">قالب فاتح</button>
+          <button class="secondary-btn" id="bluePresetBtn" type="button">قالب أزرق تنفيذي</button>
+        </div>
+      </div>
+
+      <div id="certificatesAdmin" class="tab">
+        <p class="small-note">تحكم كامل في قسم الشهادات: تعديل الأسماء، الجهة، التاريخ، التصنيف، إضافة وحذف الشهادات. التصنيف الذي تكتبه هنا يظهر تلقائيًا كزر فلترة في الموقع مثل: الشهادات الأكاديمية، شهادات الخبرة، إدارة المشاريع، إدارة العمليات.</p>
+        <div class="form-grid">
+          <div class="field"><label>عنوان قسم الشهادات</label><input id="certificatesTitleInput"></div>
+          <div class="field"><label>نص قسم الشهادات</label><textarea id="certificatesIntroInput"></textarea></div>
+          <div class="field"><label>نص زر تحميل الشهادات</label><input id="certificatesButtonInput"></div>
+          <div class="field"><label>رابط ملف الشهادات PDF</label><input id="certificatesFileInput" placeholder="assets/certificates/Basem_Certificates_61.pdf"></div>
+        </div>
+        <datalist id="certificateCategories"><option value="أكاديمية"><option value="مهنية"><option value="خبرات"><option value="المؤهلات الأكاديمية"><option value="الخبرة العملية"><option value="إدارة العمليات"><option value="إدارة المشاريع"><option value="التسويق الرقمي"><option value="تحليل البيانات"><option value="البرمجة"><option value="الموارد البشرية"></datalist>
+        <h3 style="margin-top:24px">أسماء الشهادات</h3>
+        <div id="certificatesList"></div>
+        <button class="secondary-btn" id="addCertificateBtn">+ إضافة شهادة جديدة</button>
+      </div>
+
+      <div id="security" class="tab">
+        <div class="form-grid">
+          <div class="field"><label>كلمة مرور جديدة</label><input id="newPassword" type="password" placeholder="اتركها فارغة إذا لا تريد التغيير"></div>
+        </div>
+        <p class="small-note">تنبيه: هذه حماية مناسبة لإخفاء لوحة ثابتة عن الزوار العاديين، لكنها ليست حماية سيرفر حقيقية. للحماية الكاملة والتحكم من أي جهاز نحتاج ربط Supabase Auth أو Backend.</p>
+      </div>
+
+      <div id="backup" class="tab">
+        <p class="small-note">صدّر بياناتك كنسخة احتياطية، أو الصق نسخة JSON لاسترجاعها.</p>
+        <textarea id="backupText" class="code" rows="10"></textarea>
+        <div class="admin-actions"><button class="secondary-btn" id="exportBtn">تحديث كود النسخة</button><button class="secondary-btn" id="importBtn">استيراد البيانات</button></div>
+      </div>
+
       <div class="admin-actions">
-        <a class="secondary-btn" href="index.html">عرض الموقع</a>
-        <button id="saveAll" class="primary-btn" type="button">حفظ كل التعديلات</button>
-        <button id="exportData" class="secondary-btn" type="button">تصدير JSON</button>
-        <button id="resetData" class="danger-btn" type="button">استعادة الافتراضي</button>
+        <button class="primary-btn" id="saveBtn">حفظ التعديلات</button>
+        <button class="secondary-btn" id="previewBtn">معاينة الموقع</button>
+        <button class="danger tab-btn" id="resetBtn">مسح التعديلات المحلية</button>
+        <button class="secondary-btn" id="logoutBtn">خروج</button>
       </div>
-    </header>
-
-    <section class="admin-card quick-panel">
-      <h2>تحكم سريع بالأقسام</h2>
-      <div class="toggle-grid">
-        <label><input type="checkbox" data-section-visible="about"> إظهار قسم النبذة</label>
-        <label><input type="checkbox" data-section-visible="experience"> إظهار قسم الخبرات</label>
-        <label><input type="checkbox" data-section-visible="education"> إظهار قسم التعليم</label>
-        <label><input type="checkbox" data-section-visible="certificates"> إظهار قسم الشهادات</label>
-        <label><input type="checkbox" data-section-visible="contact"> إظهار قسم التواصل</label>
-      </div>
-    </section>
-
-    <section class="admin-card">
-      <h2>البيانات الأساسية</h2>
-      <div class="form-grid">
-        <label>الاسم بالعربي<input data-field="brandNameAr" /></label>
-        <label>الاسم بالإنجليزي<input data-field="brandNameEn" /></label>
-        <label>الوصف المختصر عربي<input data-field="eyebrowAr" /></label>
-        <label>الوصف المختصر إنجليزي<input data-field="eyebrowEn" /></label>
-        <label>العنوان الرئيسي عربي<input data-field="heroNameAr" /></label>
-        <label>العنوان الرئيسي إنجليزي<input data-field="heroNameEn" /></label>
-        <label class="full">النص التعريفي عربي<textarea data-field="heroTextAr"></textarea></label>
-        <label class="full">النص التعريفي إنجليزي<textarea data-field="heroTextEn"></textarea></label>
-        <label>الموقع عربي<input data-field="locationAr" /></label>
-        <label>الموقع إنجليزي<input data-field="locationEn" /></label>
-        <label>البريد الإلكتروني<input data-field="email" type="email" /></label>
-        <label>رابط LinkedIn<input data-field="linkedin" /></label>
-        <label>رابط السيرة الذاتية عربي<input data-field="cvAr" placeholder="assets/docs/cv-ar.pdf" /></label>
-        <label>رابط السيرة الذاتية إنجليزي<input data-field="cvEn" placeholder="assets/docs/cv-en.pdf" /></label>
-        <label class="full">نص بطاقة الملف الشخصي عربي<textarea data-field="profileTextAr"></textarea></label>
-        <label class="full">نص بطاقة الملف الشخصي إنجليزي<textarea data-field="profileTextEn"></textarea></label>
-        <label class="full">نبذة مهنية عربي<textarea data-field="aboutAr"></textarea></label>
-        <label class="full">نبذة مهنية إنجليزي<textarea data-field="aboutEn"></textarea></label>
-      </div>
-    </section>
-
-    <section class="admin-card">
-      <div class="admin-section-title">
-        <h2>الأقسام الإضافية</h2>
-        <button id="addSection" class="secondary-btn" type="button">+ إضافة قسم جديد</button>
-      </div>
-      <p class="muted">أضف أي قسم تريده مثل: الخدمات، المشاريع، المهارات، الإنجازات. سيظهر القسم الجديد قبل قسم التواصل في الموقع.</p>
-      <div id="sectionEditor" class="section-editor"></div>
-    </section>
-
-    <section class="admin-card">
-      <div class="admin-section-title">
-        <h2>الشهادات</h2>
-        <button id="addCert" class="secondary-btn" type="button">+ إضافة شهادة</button>
-      </div>
-      <p class="muted">ضع اسم صورة الشهادة الموجودة داخل مجلد <code>assets/certificates</code> مثل: <code>cert-01.jpg</code></p>
-      <div id="certEditor" class="cert-editor"></div>
+      <div id="saveMsg"></div>
     </section>
   </main>
-  <script src="admin.js"></script>
+
+<script>
+const DEFAULT_PASSWORD = 'Basem@2026';
+const defaultCertificates = [
+  {
+    "name": "بكالوريوس لغة إنجليزية",
+    "issuer": "جامعة ذمار",
+    "date": "2009",
+    "category": "المؤهلات الأكاديمية"
+  },
+  {
+    "name": "دبلوم التنمية البشرية",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "أساسيات التسويق الرقمي",
+    "issuer": "Google",
+    "date": "2022",
+    "category": "التسويق الرقمي"
+  },
+  {
+    "name": "Designing the Future of Work",
+    "issuer": "UNSW Sydney / Coursera",
+    "date": "2022",
+    "category": "الإدارة والعمل"
+  },
+  {
+    "name": "Preparing to Manage Human Resources",
+    "issuer": "University of Minnesota / Coursera",
+    "date": "2022",
+    "category": "الموارد البشرية"
+  },
+  {
+    "name": "Create an Employee Feedback Survey with TypeForm",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "الموارد البشرية"
+  },
+  {
+    "name": "Develop a Company Website with Wix",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "المواقع الرقمية"
+  },
+  {
+    "name": "Introduction to Microsoft Excel",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل البيانات"
+  },
+  {
+    "name": "Create a Custom Marketing Analytics Dashboard in Data Studio",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل البيانات"
+  },
+  {
+    "name": "Create a Project Charter with Google Docs",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Introduction to Business Analysis Using Spreadsheets: Basics",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "تحليل الأعمال"
+  },
+  {
+    "name": "Construct Stock Market Indices",
+    "issuer": "Coursera Project Network",
+    "date": "2022",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "International Commercial Correspondence",
+    "issuer": "عالم الدواء للتجارة والاستثمار",
+    "date": "2009",
+    "category": "الخبرة العملية"
+  },
+  {
+    "name": "التوزيع والتحصيل",
+    "issuer": "شركة تلد للتجارة العامة",
+    "date": "2012",
+    "category": "الخبرة العملية"
+  },
+  {
+    "name": "Accounting for Non-Accountants",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "How to Do a Financial Feasibility Study for a Business",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "Programming VBA using Excel",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "Excel والبرمجة"
+  },
+  {
+    "name": "Operations Management",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة العمليات"
+  },
+  {
+    "name": "Project Management",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Project Management Foundation",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Project Planning",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "The Project: From Execution to Closure",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "Introduction to Python Programming",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "البرمجة"
+  },
+  {
+    "name": "Safe Investments During An Economic Crisis",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "إدارة المشاريع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "أساسيات المشروع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "إدارة العمليات",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة العمليات"
+  },
+  {
+    "name": "الاستثمار الآمن في الأزمات الاقتصادية",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "الأعمال والمالية"
+  },
+  {
+    "name": "المشروع: من التنفيذ إلى الإغلاق",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "البرمجة باستخدام Excel VBA",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "Excel والبرمجة"
+  },
+  {
+    "name": "تخطيط المشروع",
+    "issuer": "إدراك",
+    "date": "2023",
+    "category": "إدارة المشاريع"
+  },
+  {
+    "name": "المحاسبة لغير المحاسبين",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "كيفية عمل دراسة الجدوى المالية للمشروع",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "المالية"
+  },
+  {
+    "name": "مقدمة إلى البرمجة باستخدام لغة بايثون",
+    "issuer": "إدراك",
+    "date": "2022",
+    "category": "البرمجة"
+  },
+  {
+    "name": "Selling Smarter",
+    "issuer": "إدراك",
+    "date": "2024",
+    "category": "المبيعات"
+  },
+  {
+    "name": "Introduction in Artificial Intelligence",
+    "issuer": "إدراك",
+    "date": "2026",
+    "category": "الذكاء الاصطناعي"
+  },
+  {
+    "name": "مقدمة إلى الذكاء الاصطناعي",
+    "issuer": "إدراك",
+    "date": "2026",
+    "category": "الذكاء الاصطناعي"
+  },
+  {
+    "name": "البيع بذكاء",
+    "issuer": "إدراك",
+    "date": "2024",
+    "category": "المبيعات"
+  },
+  {
+    "name": "مهارات النجاح",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "استخدام لينكدإن للوصول للفرص المهنية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "فهم سوق العمل",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "المقابلة الشخصية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "السيرة الذاتية",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "التخطيط لبناء مسار مهني ناجح",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "البحث واكتشاف الفرص",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "الإعداد المهني",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "إدارة المشتريات",
+    "issuer": "منصة معارف",
+    "date": "2024",
+    "category": "المشتريات"
+  },
+  {
+    "name": "برنامج المشتريات واللوجستيات",
+    "issuer": "DisasterReady",
+    "date": "2024",
+    "category": "المشتريات واللوجستيات"
+  },
+  {
+    "name": "أساسيات المهارات القيادية",
+    "issuer": "DisasterReady",
+    "date": "2025",
+    "category": "القيادة"
+  },
+  {
+    "name": "أساسيات البحث عن منح",
+    "issuer": "DisasterReady",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "Effective Communication in the Workplace",
+    "issuer": "OpenLearn",
+    "date": "2025",
+    "category": "الاتصال"
+  },
+  {
+    "name": "Corporate Governance Essentials: From Theory to Practice",
+    "issuer": "OpenLearn Create",
+    "date": "2025",
+    "category": "الحوكمة"
+  },
+  {
+    "name": "المهارات الضرورية في سوق العمل",
+    "issuer": "منصة تدريبية",
+    "date": "2025",
+    "category": "التطوير المهني"
+  },
+  {
+    "name": "التخطيط الإستراتيجي",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "إدارة الوقت",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "فنون التعامل",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "إدارة الاجتماعات",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الإدارة والتطوير"
+  },
+  {
+    "name": "طرق التدريس",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "التعليم والتدريب"
+  },
+  {
+    "name": "القيادة وصناعة القائد",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "القيادة"
+  },
+  {
+    "name": "فن الإلقاء والخطابة",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الاتصال"
+  },
+  {
+    "name": "مهارات التواصل والتأثير",
+    "issuer": "أكاديمية العلوم",
+    "date": "2013",
+    "category": "الاتصال"
+  }
+];
+const defaults = {
+  name:'باسم عبدالغفور عبدالقوي أحمد',
+  title:'مدير عمليات | التجارة الإلكترونية | سلاسل الإمداد',
+  heroText:'أكثر من 15 عامًا من الخبرة في إدارة العمليات، المشتريات، اللوجستيات، سلاسل الإمداد، التجارة الإلكترونية، تحليل البيانات والتحول الرقمي.',
+  cardTitle:'Operations • E-Commerce • Supply Chain',
+  cardSubtitle:'Transforming operations into sustainable growth',
+  aboutText:'مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.',
+  yearsStat:'15+', certStat:'61', rolesStat:'7+',
+  linkedin:'https://www.linkedin.com/in/basem-al-shameri-b1a848395',
+  email:'basemalshameri6@gmail.com',
+  phone:'+966504319217',
+  contactFields:[
+    {label:'الموقع', value:'الدمام، المملكة العربية السعودية', link:''},
+    {label:'الجوال', value:'+966504319217', link:'tel:+966504319217'},
+    {label:'البريد', value:'basemalshameri6@gmail.com', link:'mailto:basemalshameri6@gmail.com'},
+    {label:'LinkedIn', value:'www.linkedin.com/in/basem-al-shameri-b1a848395', link:'https://www.linkedin.com/in/basem-al-shameri-b1a848395'}
+  ],
+  experiences:[
+    {period:'2024 - الآن', title:'مدير العمليات - شركة شاطئ الوصل التجارية NMA', description:'إدارة عمليات التجارة الإلكترونية، متابعة مؤشرات الأداء، تطوير النمو الرقمي، والتنسيق بين الإدارات.'},
+    {period:'2018 - 2024', title:'إدخال بيانات وتقنية معلومات - شركة التسويق السعودية', description:'إدارة قواعد البيانات، إعداد التقارير، دعم الأنظمة التقنية، وتحسين جودة البيانات.'},
+    {period:'2012 - 2014', title:'مندوب مبيعات ولوجستيات - MBE للشحن', description:'إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق عمليات الشحن.'},
+    {period:'2009 - 2012', title:'مشتريات خارجية، مبيعات، توزيع وتحصيل', description:'إدارة المشتريات الدولية، الاعتمادات المستندية، التوزيع، المبيعات والتحصيل.'}
+  ],
+  skills:['Operations Management','E-Commerce Operations','Supply Chain','International Purchasing','Logistics','Inventory Management','ERP / Odoo','Microsoft Excel','Data Analysis','Project Management','Digital Marketing','Python Basics'],
+  achievements:[
+    {title:'تحسين العمليات',description:'تحليل سير العمل وتحسين الكفاءة التشغيلية بين الفرق والمنصات الرقمية.'},
+    {title:'تطوير الأداء الرقمي',description:'تحسين متابعة الطلبات، التنسيق التشغيلي، ورفع جودة الأداء في التجارة الإلكترونية.'},
+    {title:'تحليل البيانات',description:'إعداد تقارير تشغيلية وتحليل مؤشرات الأداء باستخدام Excel والأنظمة الداخلية.'}
+  ],
+  projects:[
+    {title:'إدارة موقع التجارة الإلكترونية',description:'متابعة العمليات اليومية وتحسين تجربة الطلبات وربط الأعمال الرقمية بالعمليات التشغيلية.'},
+    {title:'تقارير Excel تشغيلية',description:'تنظيم بيانات المبيعات والمخزون وإعداد تقارير تساعد في اتخاذ القرار.'},
+    {title:'أدوات Python مساعدة',description:'استخدام Python في معالجة البيانات والأتمتة وتحسين كفاءة الأعمال المتكررة.'}
+  ],
+  certificatesTitle:'61 شهادة احترافية',
+  certificatesIntro:'يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.',
+  certificatesButton:'تحميل الشهادات',
+  certificatesFile:'assets/certificates/Basem_Certificates_61.pdf',
+  certificates:defaultCertificates,
+  sections:[],
+  design:{bg:'#090d18', bg2:'#12345b', panel:'#111827', text:'#f8fafc', muted:'#a8b3c7', gold:'#d6a94a', blue:'#46b4ff', button:'#d6a94a', backgroundImage:'', panelOpacity:80, radius:28, animations:'on'}
+};
+function getData(){try{return {...defaults,...JSON.parse(localStorage.getItem('basemPortfolioData')||'{}')}}catch(e){return {...defaults}}}
+function setData(d){localStorage.setItem('basemPortfolioData', JSON.stringify(d));}
+function getPassword(){return localStorage.getItem('basemAdminPassword') || DEFAULT_PASSWORD;}
+function $(id){return document.getElementById(id)}
+function showPanel(){ $('loginBox').classList.add('hidden'); $('adminPanel').classList.remove('hidden'); loadForm(); }
+$('loginBtn').onclick=()=>{ if($('passwordInput').value===getPassword()){sessionStorage.setItem('basemAdminLogged','1');showPanel()} else $('loginMsg').innerHTML='<div class="success">كلمة المرور غير صحيحة.</div>'; };
+if(sessionStorage.getItem('basemAdminLogged')==='1') showPanel();
+
+document.querySelectorAll('.tab-btn[data-tab]').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');$(btn.dataset.tab).classList.add('active')});
+function loadForm(){const d=getData();['name','title','heroText','cardTitle','cardSubtitle','aboutText','yearsStat','certStat','rolesStat','linkedin','email'].forEach(k=>$(k).value=d[k]||''); $('certificatesTitleInput').value=d.certificatesTitle||''; $('certificatesIntroInput').value=d.certificatesIntro||''; $('certificatesButtonInput').value=d.certificatesButton||''; $('certificatesFileInput').value=d.certificatesFile||'';renderContactFieldsAdmin(d.contactFields||[]);renderExperiences(d.experiences||[]);renderSkills(d.skills||[]);renderCardsAdmin('achievementsList',d.achievements||[],'achievement');renderCardsAdmin('projectsList',d.projects||[],'project');renderSections(d.sections||[]);loadDesign(d.design||defaults.design);renderCertificatesAdmin(d.certificates||defaultCertificates);$('backupText').value=JSON.stringify(d,null,2)}
+function renderExperiences(experiences){const box=$('experiencesList');box.innerHTML='';experiences.forEach((x,i)=>{const div=document.createElement('div');div.className='experience-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>الفترة</label><input data-exp="period" value="${esc(x.period||'')}"></div><div class="field"><label>المسمى والشركة</label><input data-exp="title" value="${esc(x.title||'')}"></div><div class="field"><label>الوصف</label><textarea data-exp="description">${esc(x.description||'')}</textarea></div></div><button class="danger tab-btn" onclick="removeExperience(${i})">حذف الخبرة</button>`;box.appendChild(div)})}
+function renderSkills(skills){const box=$('skillsList');box.innerHTML='';skills.forEach((skill,i)=>{const div=document.createElement('div');div.className='skill-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>اسم المهارة</label><input data-skill value="${esc(skill||'')}"></div></div><button class="danger tab-btn" onclick="removeSkill(${i})">حذف المهارة</button>`;box.appendChild(div)})}
+function renderCardsAdmin(boxId, items, type){const box=$(boxId);box.innerHTML='';items.forEach((x,i)=>{const div=document.createElement('div');div.className=type+'-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>العنوان</label><input data-card="title" value="${esc(x.title||'')}"></div><div class="field"><label>الوصف</label><textarea data-card="description">${esc(x.description||'')}</textarea></div></div><button class="danger tab-btn" onclick="removeCard('${type}',${i})">حذف</button>`;box.appendChild(div)})}
+function renderContactFieldsAdmin(fields){const box=$('contactFieldsList');if(!box)return;box.innerHTML='';(fields||[]).forEach((f,i)=>{const div=document.createElement('div');div.className='contact-field-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>اسم الحقل</label><input data-contact="label" value="${esc(f.label||'')}" placeholder="مثال: الجوال"></div><div class="field"><label>القيمة الظاهرة</label><input data-contact="value" value="${esc(f.value||'')}" placeholder="مثال: +966504319217"></div><div class="field"><label>الرابط أو الإجراء</label><input data-contact="link" value="${esc(f.link||'')}" placeholder="مثال: tel:+966504319217 أو https://..."></div></div><button class="danger tab-btn" onclick="removeContactField(${i})">حذف الحقل</button>`;box.appendChild(div)})}
+
+function renderCertificatesAdmin(certs){const box=$('certificatesList');if(!box)return;box.innerHTML='';(certs||[]).forEach((c,i)=>{const div=document.createElement('div');div.className='certificate-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>اسم الشهادة</label><input data-cert="name" value="${esc(c.name||'')}"></div><div class="field"><label>الجهة المانحة</label><input data-cert="issuer" value="${esc(c.issuer||'')}"></div><div class="field"><label>التاريخ</label><input data-cert="date" value="${esc(c.date||'')}"></div><div class="field"><label>نوع الشهادة / التصنيف</label><input data-cert="category" list="certificateCategories" value="${esc(c.category||'')}"></div></div><button class="danger tab-btn" onclick="removeCertificate(${i})">حذف الشهادة</button>`;box.appendChild(div)})}
+
+function renderSections(sections){const box=$('sectionsList');box.innerHTML='';sections.forEach((s,i)=>{const div=document.createElement('div');div.className='custom-item section-item';div.innerHTML=`<div class="form-grid"><div class="field"><label>عنوان صغير</label><input data-sec="label" value="${esc(s.label||'')}"></div><div class="field"><label>عنوان القسم</label><input data-sec="title" value="${esc(s.title||'')}"></div><div class="field"><label>محتوى القسم</label><textarea data-sec="content">${esc(s.content||'')}</textarea></div></div><button class="danger tab-btn" onclick="removeSection(${i})">حذف القسم</button>`;box.appendChild(div)})}
+
+function loadDesign(design){
+  const d={...defaults.design,...(design||{})};
+  const map={designBg:'bg',designBg2:'bg2',designPanel:'panel',designText:'text',designMuted:'muted',designGold:'gold',designBlue:'blue',designButton:'button',designBackgroundImage:'backgroundImage',designPanelOpacity:'panelOpacity',designRadius:'radius',designAnimations:'animations'};
+  Object.entries(map).forEach(([id,key])=>{const el=$(id);if(el) el.value=d[key] ?? '';});
+}
+function collectDesign(){
+  const val=(id, fallback='')=>($(id)?$(id).value:fallback);
+  return {bg:val('designBg','#090d18'),bg2:val('designBg2','#12345b'),panel:val('designPanel','#111827'),text:val('designText','#f8fafc'),muted:val('designMuted','#a8b3c7'),gold:val('designGold','#d6a94a'),blue:val('designBlue','#46b4ff'),button:val('designButton','#d6a94a'),backgroundImage:val('designBackgroundImage','').trim(),panelOpacity:Number(val('designPanelOpacity',80))||80,radius:Number(val('designRadius',28))||28,animations:val('designAnimations','on')};
+}
+function setDesignPreset(kind){
+  const presets={
+    dark:{bg:'#090d18',bg2:'#12345b',panel:'#111827',text:'#f8fafc',muted:'#a8b3c7',gold:'#d6a94a',blue:'#46b4ff',button:'#d6a94a',backgroundImage:'',panelOpacity:80,radius:28,animations:'on'},
+    light:{bg:'#f8fbff',bg2:'#e8eef8',panel:'#ffffff',text:'#111827',muted:'#526071',gold:'#b8860b',blue:'#2563eb',button:'#b8860b',backgroundImage:'',panelOpacity:92,radius:24,animations:'on'},
+    blue:{bg:'#07111f',bg2:'#0e3a66',panel:'#102033',text:'#f8fafc',muted:'#b8c5d8',gold:'#f0c66a',blue:'#38bdf8',button:'#38bdf8',backgroundImage:'',panelOpacity:86,radius:30,animations:'on'}
+  };
+  loadDesign(presets[kind]||presets.dark);
+}
+
+function collectCardItems(selector){return [...document.querySelectorAll(selector)].map(item=>({title:item.querySelector('[data-card="title"]').value.trim(),description:item.querySelector('[data-card="description"]').value.trim()})).filter(x=>x.title||x.description)}
+function collectData(){let d=getData();['name','title','heroText','cardTitle','cardSubtitle','aboutText','yearsStat','certStat','rolesStat','linkedin','email'].forEach(k=>d[k]=$(k).value.trim()); d.certificatesTitle=$('certificatesTitleInput').value.trim(); d.certificatesIntro=$('certificatesIntroInput').value.trim(); d.certificatesButton=$('certificatesButtonInput').value.trim(); d.certificatesFile=$('certificatesFileInput').value.trim();d.contactFields=[...document.querySelectorAll('.contact-field-item')].map(item=>({label:item.querySelector('[data-contact="label"]').value.trim(),value:item.querySelector('[data-contact="value"]').value.trim(),link:item.querySelector('[data-contact="link"]').value.trim()})).filter(x=>x.label||x.value||x.link);d.phone=(d.contactFields.find(x=>x.label&&x.label.includes('جوال'))||{}).value||'+966504319217';d.experiences=[...document.querySelectorAll('.experience-item')].map(item=>({period:item.querySelector('[data-exp="period"]').value.trim(),title:item.querySelector('[data-exp="title"]').value.trim(),description:item.querySelector('[data-exp="description"]').value.trim()})).filter(x=>x.title||x.period||x.description);d.skills=[...document.querySelectorAll('.skill-item [data-skill]')].map(input=>input.value.trim()).filter(Boolean);d.achievements=collectCardItems('.achievement-item');d.projects=collectCardItems('.project-item');d.certificates=[...document.querySelectorAll('.certificate-item')].map(item=>({name:item.querySelector('[data-cert="name"]').value.trim(),issuer:item.querySelector('[data-cert="issuer"]').value.trim(),date:item.querySelector('[data-cert="date"]').value.trim(),category:item.querySelector('[data-cert="category"]').value.trim()})).filter(x=>x.name||x.issuer||x.date||x.category);d.sections=[...document.querySelectorAll('.custom-item')].map(item=>({label:item.querySelector('[data-sec="label"]').value.trim(),title:item.querySelector('[data-sec="title"]').value.trim(),content:item.querySelector('[data-sec="content"]').value.trim()})).filter(x=>x.title||x.content);d.design=collectDesign();return d}
+$('addContactFieldBtn').onclick=()=>{let d=collectData();d.contactFields.push({label:'حقل جديد',value:'',link:''});setData(d);loadForm();};
+window.removeContactField=(i)=>{let d=collectData();d.contactFields.splice(i,1);setData(d);loadForm();};
+$('addExperienceBtn').onclick=()=>{let d=collectData();d.experiences.push({period:'',title:'خبرة عملية جديدة',description:'اكتب وصف الخبرة هنا'});setData(d);loadForm();};
+window.removeExperience=(i)=>{let d=collectData();d.experiences.splice(i,1);setData(d);loadForm();};
+$('addSkillBtn').onclick=()=>{let d=collectData();d.skills.push('مهارة جديدة');setData(d);loadForm();};
+window.removeSkill=(i)=>{let d=collectData();d.skills.splice(i,1);setData(d);loadForm();};
+$('addAchievementBtn').onclick=()=>{let d=collectData();d.achievements.push({title:'إنجاز جديد',description:'اكتب وصف الإنجاز هنا'});setData(d);loadForm();};
+$('addProjectBtn').onclick=()=>{let d=collectData();d.projects.push({title:'مشروع جديد',description:'اكتب وصف المشروع هنا'});setData(d);loadForm();};
+window.removeCard=(type,i)=>{let d=collectData();const key=type==='achievement'?'achievements':'projects';d[key].splice(i,1);setData(d);loadForm();};
+
+$('addCertificateBtn').onclick=()=>{let d=collectData();d.certificates.push({name:'شهادة جديدة',issuer:'',date:'',category:''});setData(d);loadForm();};
+window.removeCertificate=(i)=>{let d=collectData();d.certificates.splice(i,1);setData(d);loadForm();};
+$('addSectionBtn').onclick=()=>{let d=collectData();d.sections.push({label:'New Section',title:'قسم جديد',content:'اكتب محتوى القسم هنا'});setData(d);loadForm();};
+window.removeSection=(i)=>{let d=collectData();d.sections.splice(i,1);setData(d);loadForm();};
+
+if($('darkPresetBtn')) $('darkPresetBtn').onclick=()=>setDesignPreset('dark');
+if($('lightPresetBtn')) $('lightPresetBtn').onclick=()=>setDesignPreset('light');
+if($('bluePresetBtn')) $('bluePresetBtn').onclick=()=>setDesignPreset('blue');
+$('saveBtn').onclick=()=>{const d=collectData();setData(d);if($('newPassword').value.trim()){localStorage.setItem('basemAdminPassword',$('newPassword').value.trim());$('newPassword').value=''}$('saveMsg').innerHTML='<div class="success">تم حفظ التعديلات بنجاح.</div>';$('backupText').value=JSON.stringify(d,null,2)};
+$('previewBtn').onclick=()=>window.open('index.html','_blank');
+$('logoutBtn').onclick=()=>{sessionStorage.removeItem('basemAdminLogged');location.reload()};
+$('resetBtn').onclick=()=>{if(confirm('هل تريد مسح كل التعديلات المحلية؟')){localStorage.removeItem('basemPortfolioData');loadForm();}};
+$('exportBtn').onclick=()=>$('backupText').value=JSON.stringify(collectData(),null,2);
+$('importBtn').onclick=()=>{try{const d=JSON.parse($('backupText').value);setData({...defaults,...d});loadForm();$('saveMsg').innerHTML='<div class="success">تم استيراد البيانات.</div>'}catch(e){alert('كود JSON غير صحيح')}};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+</script>
 </body>
 </html>

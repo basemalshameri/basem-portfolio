@@ -3,128 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Basem Abdulghafoor Abdulqawi Ahmed - Operations Manager, Purchasing & Logistics Specialist, E-commerce Management." />
-  <title>Basem Abdulghafoor | Operations Manager</title>
+  <title>باسم عبدالغفور عبدالقوي أحمد | موقع شخصي</title>
+  <meta name="description" content="الموقع الشخصي لباسم عبدالغفور عبدالقوي أحمد - مدير عمليات، التجارة الإلكترونية، سلاسل الإمداد، المشتريات واللوجستيات." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="brand" href="#home" aria-label="Basem Portfolio">
-        <img class="brand-mark brand-photo" src="assets/images/profile.png" alt="باسم عبدالغفور" />
-        <span>
-          <strong data-ar="باسم عبدالغفور" data-en="Basem Alshameri">باسم عبدالغفور</strong>
-          <small data-ar="مدير عمليات ومشتريات ولوجستيات" data-en="Operations, Purchasing & Logistics Manager">مدير عمليات ومشتريات ولوجستيات</small>
-        </span>
-      </a>
-      <nav class="nav">
-        <a href="#about" data-ar="نبذة" data-en="About">نبذة</a>
-        <a href="#experience" data-ar="الخبرات" data-en="Experience">الخبرات</a>
-        <a href="#education" data-ar="التعليم" data-en="Education">التعليم</a>
-        <a href="#certificates" data-ar="الشهادات" data-en="Certificates">الشهادات</a>
-        <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
-      </nav>
+  <header class="site-header">
+    <a href="#home" class="brand">BA</a>
+    <nav id="nav">
+      <a href="#about">نبذة</a>
+      <a href="#experience">الخبرات</a>
+      <a href="#skills">المهارات</a>
+      <a href="#achievements">الإنجازات</a>
+      <a href="#projects">المشاريع</a>
+      <a href="#certificates">الشهادات</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+    <div class="header-actions">
+      <button id="langToggle" class="ghost-btn">EN</button>
+      <button id="themeToggle" class="ghost-btn">☾</button>
+      <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+  </header>
 
-      <button id="langToggle" class="lang-btn" type="button">English</button>
-    </header>
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-content reveal">
+        <h1 id="siteName" data-edit="name" data-ar="باسم عبدالغفور عبدالقوي أحمد" data-en="Basem Abdulghafor Abdulqawi Ahmed">باسم عبدالغفور عبدالقوي أحمد</h1>
+        <h2 id="siteTitle" data-edit="title" data-ar="مدير عمليات | التجارة الإلكترونية | سلاسل الإمداد" data-en="Operations Manager | E-Commerce Operations | Supply Chain">مدير عمليات | التجارة الإلكترونية | سلاسل الإمداد</h2>
+        <p id="heroText" class="hero-text" data-edit="heroText" data-ar="أكثر من 15 عامًا من الخبرة في إدارة العمليات، المشتريات، اللوجستيات، سلاسل الإمداد، التجارة الإلكترونية، تحليل البيانات والتحول الرقمي." data-en="Over 15 years of experience in operations management, purchasing, logistics, supply chain, e-commerce, data analysis, and digital transformation.">أكثر من 15 عامًا من الخبرة في إدارة العمليات، المشتريات، اللوجستيات، سلاسل الإمداد، التجارة الإلكترونية، تحليل البيانات والتحول الرقمي.</p>
+        <div class="hero-buttons">
+          <a class="primary-btn" href="assets/cv/Basem_Arabic_CV.pdf" download>تحميل السيرة العربية</a>
+          <a class="secondary-btn" href="assets/cv/Basem_English_CV.pdf" download>Download English CV</a>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="image-ring"><img src="assets/img/profile.jpg" alt="باسم عبدالغفور عبدالقوي أحمد" /></div>
+        <div class="glass-card">
+          <strong id="cardTitle" data-edit="cardTitle">Operations • E-Commerce • Supply Chain</strong>
+          <span id="cardSubtitle" data-edit="cardSubtitle">Transforming operations into sustainable growth</span>
+        </div>
+      </div>
+    </section>
 
-    <main id="home">
-      <section class="hero section-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow" data-ar="مدير عمليات | مشتريات ولوجستيات | تجارة إلكترونية" data-en="Operations Manager | Purchasing & Logistics | E-commerce">مدير عمليات | مشتريات ولوجستيات | تجارة إلكترونية</p>
-          <h1 data-ar="باسم عبدالغفور عبدالقوي أحمد" data-en="Basem Abdulghafoor Abdulqawi Ahmed">باسم عبدالغفور عبدالقوي أحمد</h1>
-          <p class="hero-text" data-ar="مدير عمليات بخبرة تتجاوز 15 عاماً في إدارة العمليات التشغيلية، المشتريات الدولية، الخدمات اللوجستية، سلاسل الإمداد، إدارة البيانات، والتجارة الإلكترونية." data-en="Operations Manager with 15+ years of experience across operational management, international purchasing, logistics, supply chain, data management, and e-commerce.">مدير عمليات بخبرة تتجاوز 15 عاماً في إدارة العمليات التشغيلية، المشتريات الدولية، الخدمات اللوجستية، سلاسل الإمداد، إدارة البيانات، والتجارة الإلكترونية.</p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#certificates" data-ar="استعراض الشهادات" data-en="View Certificates">استعراض الشهادات</a>
-            <a class="secondary-btn" href="assets/docs/cv-ar.pdf" download data-ar="تحميل السيرة العربية" data-en="Download Arabic CV">تحميل السيرة العربية</a>
-            <a class="secondary-btn" href="assets/docs/cv-en.pdf" download data-ar="تحميل السيرة الإنجليزية" data-en="Download English CV">تحميل السيرة الإنجليزية</a>
-         
-        </div>
-        <aside class="profile-card reveal">
-          <img class="avatar avatar-photo" src="assets/images/profile.png" alt="باسم عبدالغفور" />
-          <h2 data-ar="الدمام، المملكة العربية السعودية" data-en="Dammam, Saudi Arabia">الدمام، المملكة العربية السعودية</h2>
-          <p data-ar="جاهز للتعاون في تطوير العمليات، التجارة الإلكترونية، المشتريات، واللوجستيات." data-en="Available for collaboration in operations, e-commerce, purchasing, and logistics.">جاهز للتعاون في تطوير العمليات، التجارة الإلكترونية، المشتريات، واللوجستيات.</p>
-          <div class="quick-stats">
-            <span><strong>15+</strong><small data-ar="سنة خبرة" data-en="Years Experience">سنة خبرة</small></span>
-            <span><strong>60</strong><small data-ar="شهادة" data-en="Certificates">شهادة</small></span>
-            <span><strong>2</strong><small data-ar="لغات" data-en="Languages">لغات</small></span>
-          </div>
-        </aside>
-      </section>
+    <section class="stats section reveal">
+      <div><strong id="yearsStat" data-edit="yearsStat">15+</strong><span>سنة خبرة</span></div>
+      <div><strong id="certStat" data-edit="certStat">61</strong><span>شهادة احترافية</span></div>
+      <div><strong id="rolesStat" data-edit="rolesStat">7+</strong><span>مناصب وخبرات متنوعة</span></div>
+    </section>
 
-      <section id="about" class="section reveal">
-        <div class="section-heading">
-          <span data-ar="01" data-en="01">01</span>
-          <h2 data-ar="نبذة مهنية" data-en="Professional Profile">نبذة مهنية</h2>
-        </div>
-        <div class="about-grid">
-          <p data-ar="أمتلك خبرة قوية في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، تطوير الاستراتيجيات الرقمية، وتحليل مؤشرات الأداء. أركز على تحويل الأهداف التشغيلية إلى إجراءات عملية قابلة للقياس والتحسين." data-en="I specialize in optimizing operational processes, vendor management, shipping and import coordination, digital strategy development, and performance indicator analysis. My focus is converting operational goals into measurable and improvable execution plans.">أمتلك خبرة قوية في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، تطوير الاستراتيجيات الرقمية، وتحليل مؤشرات الأداء. أركز على تحويل الأهداف التشغيلية إلى إجراءات عملية قابلة للقياس والتحسين.</p>
-          <div class="skill-cloud">
-            <span>Operations</span><span>Supply Chain</span><span>Logistics</span><span>E-commerce</span><span>ERP</span><span>CRM</span><span>Excel</span><span>Data Analysis</span>
-          </div>
-        </div>
-      </section>
+    <section id="about" class="section split">
+      <div class="section-title reveal">
+        <p class="eyebrow">About Me</p>
+        <h2>نبذة احترافية</h2>
+      </div>
+      <div class="panel reveal">
+        <p id="aboutText" data-edit="aboutText">مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.</p>
+      </div>
+    </section>
 
-      <section id="experience" class="section reveal">
-        <div class="section-heading">
-          <span>02</span>
-          <h2 data-ar="الخبرات العملية" data-en="Professional Experience">الخبرات العملية</h2>
-        </div>
-        <div class="timeline">
-          <article><b data-ar="2024 - حتى الآن" data-en="2024 - Present">2024 - حتى الآن</b><h3 data-ar="مدير العمليات - شركة شاطئ الوصل التجارية NMA" data-en="Operations Manager - NMA Trading Company">مدير العمليات - شركة شاطئ الوصل التجارية NMA</h3><p data-ar="إدارة العمليات التشغيلية للمواقع الإلكترونية ومنصات التجارة الإلكترونية، تطوير النمو الرقمي، وتحسين مؤشرات الأداء." data-en="Managing e-commerce operations, digital growth strategy, and operational performance optimization.">إدارة العمليات التشغيلية للمواقع الإلكترونية ومنصات التجارة الإلكترونية، تطوير النمو الرقمي، وتحسين مؤشرات الأداء.</p></article>
-          <article><b>2018 - 2024</b><h3 data-ar="إدخال بيانات وتقنية معلومات - شركة التسويق السعودية" data-en="Data Entry & IT - Saudi Marketing Company">إدخال بيانات وتقنية معلومات - شركة التسويق السعودية</h3><p data-ar="إدارة قواعد البيانات، التقارير التشغيلية، دعم الأنظمة التقنية، وتحسين جودة البيانات." data-en="Database management, operational reporting, IT support, and data quality improvement.">إدارة قواعد البيانات، التقارير التشغيلية، دعم الأنظمة التقنية، وتحسين جودة البيانات.</p></article>
-          <article><b>2012 - 2014</b><h3 data-ar="مندوب مبيعات ولوجستيات - MBE" data-en="Sales & Logistics Representative - MBE">مندوب مبيعات ولوجستيات - MBE</h3><p data-ar="إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق المراسلات والعمليات اللوجستية." data-en="Air and sea freight operations, client follow-up, and logistics coordination.">إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق المراسلات والعمليات اللوجستية.</p></article>
-          <article><b>2009 - 2010</b><h3 data-ar="مدير مشتريات خارجية - علم الدواء" data-en="International Purchasing Manager - Alam Al-Dawa">مدير مشتريات خارجية - علم الدواء</h3><p data-ar="إدارة المشتريات الدولية، التفاوض مع الموردين، الاعتمادات المستندية، الشحن والتخليص." data-en="International purchasing, supplier negotiation, letters of credit, shipping, and clearance.">إدارة المشتريات الدولية، التفاوض مع الموردين، الاعتمادات المستندية، الشحن والتخليص.</p></article>
-        </div>
-      </section>
+    <section id="experience" class="section">
+      <div class="section-title reveal"><p class="eyebrow">Experience</p><h2>الخبرات العملية</h2></div>
+      <div class="timeline reveal">
+        <article><span>2024 - الآن</span><h3>مدير العمليات - شركة شاطئ الوصل التجارية NMA</h3><p>إدارة عمليات التجارة الإلكترونية، متابعة مؤشرات الأداء، تطوير النمو الرقمي، والتنسيق بين الإدارات.</p></article>
+        <article><span>2018 - 2024</span><h3>إدخال بيانات وتقنية معلومات - شركة التسويق السعودية</h3><p>إدارة قواعد البيانات، إعداد التقارير، دعم الأنظمة التقنية، وتحسين جودة البيانات.</p></article>
+        <article><span>2012 - 2014</span><h3>مندوب مبيعات ولوجستيات - MBE للشحن</h3><p>إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق عمليات الشحن.</p></article>
+        <article><span>2009 - 2012</span><h3>مشتريات خارجية، مبيعات، توزيع وتحصيل</h3><p>إدارة المشتريات الدولية، الاعتمادات المستندية، التوزيع، المبيعات والتحصيل.</p></article>
+      </div>
+    </section>
 
-      <section id="education" class="section reveal">
-        <div class="section-heading"><span>03</span><h2 data-ar="التعليم والمؤهلات الأكاديمية" data-en="Education & Academic Qualifications">التعليم والمؤهلات الأكاديمية</h2></div>
-        <div class="cards two">
-          <article class="info-card"><span data-ar="جامعة ذمار" data-en="Thamar University">جامعة ذمار</span><h3 data-ar="بكالوريوس لغة إنجليزية - كلية التربية" data-en="B.A.Ed. in English Language - Faculty of Education">بكالوريوس لغة إنجليزية - كلية التربية</h3><p data-ar="العام الأكاديمي 2008/2009 - التقدير العام: جيد - المعدل التراكمي 72.51%." data-en="Academic year 2008/2009 - General grade: Good - Accumulative average: 72.51%.">العام الأكاديمي 2008/2009 - التقدير العام: جيد - المعدل التراكمي 72.51%.</p></article>
-          <article class="info-card"><span data-ar="أكاديمية العلوم" data-en="Sciences Academy">أكاديمية العلوم</span><h3 data-ar="دبلوم التنمية البشرية" data-en="Diploma in Human Resources Development">دبلوم التنمية البشرية</h3><p data-ar="برنامج تدريبي لمدة 80 ساعة يشمل التخطيط الاستراتيجي، إدارة الوقت، القيادة، الإلقاء، ومهارات التواصل." data-en="80-hour diploma covering strategic planning, time management, leadership, public speaking, and communication skills.">برنامج تدريبي لمدة 80 ساعة يشمل التخطيط الاستراتيجي، إدارة الوقت، القيادة، الإلقاء، ومهارات التواصل.</p></article>
-        </div>
-      </section>
+    <section id="skills" class="section">
+      <div class="section-title reveal"><p class="eyebrow">Core Skills</p><h2>المهارات الأساسية</h2></div>
+      <div class="skills-grid reveal">
+        <span>Operations Management</span><span>E-Commerce Operations</span><span>Supply Chain</span><span>International Purchasing</span><span>Logistics</span><span>Inventory Management</span><span>ERP / Odoo</span><span>Microsoft Excel</span><span>Data Analysis</span><span>Project Management</span><span>Digital Marketing</span><span>Python Basics</span>
+      </div>
+    </section>
 
-      <section id="certificates" class="section reveal">
-        <div class="section-heading"><span>04</span><h2 data-ar="معرض الشهادات" data-en="Certificate Gallery">معرض الشهادات</h2></div>
-        <div class="cert-toolbar">
-          <input id="certSearch" type="search" placeholder="ابحث عن شهادة..." data-ar-placeholder="ابحث عن شهادة..." data-en-placeholder="Search certificates..." />
-          <button class="filter active" data-filter="all" data-ar="الكل" data-en="All">الكل</button>
-          <button class="filter" data-filter="academic" data-ar="أكاديمية" data-en="Academic">أكاديمية</button>
-          <button class="filter" data-filter="professional" data-ar="مهنية" data-en="Professional">مهنية</button>
-          <button class="filter" data-filter="experience" data-ar="خبرات" data-en="Experience">خبرات</button>
-        </div>
-        <div id="certGrid" class="cert-grid" aria-live="polite"></div>
-      </section>
+    <div id="customSections"></div>
 
-      <section id="contact" class="section contact-section reveal">
+    <section id="certificates" class="section">
+      <div class="section-title reveal"><p class="eyebrow">Certificates</p><h2>الشهادات المهنية</h2></div>
+      <div class="cert-panel reveal">
         <div>
-          <div class="section-heading"><span>05</span><h2 data-ar="تواصل معي" data-en="Contact">تواصل معي</h2></div>
-          <p data-ar="للتعاون المهني أو الاستشارات في العمليات، المشتريات، اللوجستيات، أو التجارة الإلكترونية." data-en="For professional collaboration or consulting in operations, purchasing, logistics, or e-commerce.">للتعاون المهني أو الاستشارات في العمليات، المشتريات، اللوجستيات، أو التجارة الإلكترونية.</p>
+          <h3 id="certificatesTitle">61 شهادة احترافية</h3>
+          <p id="certificatesIntro">يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.</p>
         </div>
-        <div class="contact-card">
-          <a href="mailto:basemalshameri6@gmail.com">basemalshameri6@gmail.com</a>
-          <a href="https://linkedin.com/in/basem-al-shameri-b1a848395" target="_blank" rel="noopener">LinkedIn</a>
-          <span data-ar="الدمام، المملكة العربية السعودية" data-en="Dammam, Kingdom of Saudi Arabia">الدمام، المملكة العربية السعودية</span>
+        <a id="certDownloadBtn" class="primary-btn" href="assets/certificates/Basem_Certificates_61.pdf" target="_blank" download>تحميل الشهادات</a>
+      </div>
+      <div id="certificateFilters" class="certificate-filters reveal"></div>
+      <div id="certificatesGrid" class="certificates-grid reveal"></div>
+    </section>
+
+    <section id="achievements" class="section">
+      <div class="section-title reveal"><p class="eyebrow">Achievements</p><h2>الإنجازات</h2></div>
+      <div class="cards reveal" id="achievementsGrid">
+        <article><h3>تحسين العمليات</h3><p>تحليل سير العمل وتحسين الكفاءة التشغيلية بين الفرق والمنصات الرقمية.</p></article>
+        <article><h3>تطوير الأداء الرقمي</h3><p>تحسين متابعة الطلبات، التنسيق التشغيلي، ورفع جودة الأداء في التجارة الإلكترونية.</p></article>
+        <article><h3>تحليل البيانات</h3><p>إعداد تقارير تشغيلية وتحليل مؤشرات الأداء باستخدام Excel والأنظمة الداخلية.</p></article>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-title reveal"><p class="eyebrow">Projects</p><h2>المشاريع</h2></div>
+      <div class="cards reveal" id="projectsGrid">
+        <article><h3>إدارة موقع التجارة الإلكترونية</h3><p>متابعة العمليات اليومية وتحسين تجربة الطلبات وربط الأعمال الرقمية بالعمليات التشغيلية.</p></article>
+        <article><h3>تقارير Excel تشغيلية</h3><p>تنظيم بيانات المبيعات والمخزون وإعداد تقارير تساعد في اتخاذ القرار.</p></article>
+        <article><h3>أدوات Python مساعدة</h3><p>استخدام Python في معالجة البيانات والأتمتة وتحسين كفاءة الأعمال المتكررة.</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>بيانات التواصل</h2>
+        <div id="contactFields" class="contact-list">
+          <p data-contact-key="location"><strong>الموقع:</strong> الدمام، المملكة العربية السعودية</p>
+          <p data-contact-key="phone"><strong>الجوال:</strong> <a href="tel:+966504319217">+966504319217</a></p>
+          <p data-contact-key="email"><strong>البريد:</strong> <a href="mailto:basemalshameri6@gmail.com">basemalshameri6@gmail.com</a></p>
+          <p data-contact-key="linkedin"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/basem-al-shameri-b1a848395" target="_blank">www.linkedin.com/in/basem-al-shameri-b1a848395</a></p>
         </div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
+  </main>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button id="closeLightbox" class="close" type="button" aria-label="Close">×</button>
-    <button id="prevCert" class="nav-arrow prev" type="button" aria-label="Previous">‹</button>
-    <figure>
-      <img id="lightboxImg" src="" alt="Certificate preview" />
-      <figcaption id="lightboxCaption"></figcaption>
-    </figure>
-    <button id="nextCert" class="nav-arrow next" type="button" aria-label="Next">›</button>
-  </div>
-
+  <footer>© <span id="year"></span> باسم عبدالغفور عبدالقوي أحمد. جميع الحقوق محفوظة.</footer>
   <script src="script.js"></script>
 </body>
 </html>
