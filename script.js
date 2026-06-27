@@ -367,6 +367,100 @@ const defaultCertificates = [
     "category": "الاتصال"
   }
 ];
+
+
+const certificateTranslations = {
+  "بكالوريوس لغة إنجليزية": "Bachelor's Degree in English Language",
+  "دبلوم التنمية البشرية": "Diploma in Human Resources Development",
+  "أساسيات التسويق الرقمي": "Fundamentals of Digital Marketing",
+  "التوزيع والتحصيل": "Distribution and Collection",
+  "إدارة المشاريع": "Project Management",
+  "أساسيات المشروع": "Project Management Fundamentals",
+  "إدارة العمليات": "Operations Management",
+  "الاستثمار الآمن في الأزمات الاقتصادية": "Safe Investments During Economic Crises",
+  "المشروع: من التنفيذ إلى الإغلاق": "Project: From Execution to Closure",
+  "البرمجة باستخدام Excel VBA": "Excel VBA Programming",
+  "تخطيط المشروع": "Project Planning",
+  "المحاسبة لغير المحاسبين": "Accounting for Non-Accountants",
+  "كيفية عمل دراسة الجدوى المالية للمشروع": "How to Do a Financial Feasibility Study for a Business",
+  "مقدمة إلى البرمجة باستخدام لغة بايثون": "Introduction to Python Programming",
+  "مقدمة إلى الذكاء الاصطناعي": "Introduction to Artificial Intelligence",
+  "البيع بذكاء": "Selling Smarter",
+  "مهارات النجاح": "Success Skills",
+  "استخدام لينكدإن للوصول للفرص المهنية": "Using LinkedIn to Access Career Opportunities",
+  "فهم سوق العمل": "Understanding the Labor Market",
+  "المقابلة الشخصية": "Job Interview Skills",
+  "السيرة الذاتية": "Professional CV Writing",
+  "التخطيط لبناء مسار مهني ناجح": "Planning a Successful Career Path",
+  "البحث واكتشاف الفرص": "Searching and Discovering Opportunities",
+  "الإعداد المهني": "Professional Preparation",
+  "إدارة المشتريات": "Purchasing Management",
+  "برنامج المشتريات واللوجستيات": "Purchasing and Logistics Program",
+  "أساسيات المهارات القيادية": "Leadership Skills Fundamentals",
+  "أساسيات البحث عن منح": "Fundamentals of Grant Searching",
+  "المهارات الضرورية في سوق العمل": "Essential Skills for the Labor Market",
+  "التخطيط الإستراتيجي": "Strategic Planning",
+  "إدارة الوقت": "Time Management",
+  "فنون التعامل": "Interpersonal Skills",
+  "إدارة الاجتماعات": "Meeting Management",
+  "طرق التدريس": "Teaching Methods",
+  "القيادة وصناعة القائد": "Leadership and Leader Development",
+  "فن الإلقاء والخطابة": "Public Speaking and Presentation Skills",
+  "مهارات التواصل والتأثير": "Communication and Influence Skills",
+  "جامعة ذمار": "Thamar University",
+  "أكاديمية العلوم": "Academy of Sciences",
+  "إدراك": "Edraak",
+  "عالم الدواء للتجارة والاستثمار": "Alam Al-Dawa Trading & Investment",
+  "شركة تلد للتجارة العامة": "Tild General Trading Company",
+  "منصة تدريبية": "Training Platform",
+  "منصة معارف": "M3aarf Platform",
+  "المؤهلات الأكاديمية": "Academic Qualifications",
+  "الإدارة والتطوير": "Management and Development",
+  "التسويق الرقمي": "Digital Marketing",
+  "الإدارة والعمل": "Management and Work",
+  "الموارد البشرية": "Human Resources",
+  "المواقع الرقمية": "Digital Websites",
+  "تحليل البيانات": "Data Analysis",
+  "إدارة المشاريع": "Project Management",
+  "تحليل الأعمال": "Business Analysis",
+  "الأعمال والمالية": "Business and Finance",
+  "الخبرة العملية": "Work Experience",
+  "المالية": "Finance",
+  "Excel والبرمجة": "Excel and Programming",
+  "إدارة العمليات": "Operations Management",
+  "البرمجة": "Programming",
+  "المبيعات": "Sales",
+  "الذكاء الاصطناعي": "Artificial Intelligence",
+  "التطوير المهني": "Professional Development",
+  "المشتريات": "Purchasing",
+  "المشتريات واللوجستيات": "Purchasing and Logistics",
+  "القيادة": "Leadership",
+  "الاتصال": "Communication",
+  "الحوكمة": "Governance",
+  "التعليم والتدريب": "Education and Training",
+  "أكاديمية": "Academic",
+  "مهنية": "Professional",
+  "خبرات": "Experience"
+};
+
+function translateCertificateValue(value, fallback){
+  const text = String(value || '').trim();
+  if (!text) return fallback || '';
+  if (currentLang !== 'en') return text;
+  return certificateTranslations[text] || text;
+}
+
+function getCertificateDisplay(c){
+  if (currentLang !== 'en') {
+    return { name: c.name || '', issuer: c.issuer || '', category: c.category || '' };
+  }
+  return {
+    name: c.nameEn || c.englishName || translateCertificateValue(c.name, ''),
+    issuer: c.issuerEn || c.englishIssuer || translateCertificateValue(c.issuer, ''),
+    category: c.categoryEn || c.englishCategory || translateCertificateValue(c.category, '')
+  };
+}
+
 const menuBtn = document.getElementById('menuBtn');
 const nav = document.getElementById('nav');
 if (menuBtn) menuBtn.onclick = () => nav.classList.toggle('open');
@@ -375,14 +469,152 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('light');
 
-let currentLang = 'ar';
-document.getElementById('langToggle').onclick = () => {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+let currentLang = localStorage.getItem('basemLang') || 'ar';
+
+const langContent = {
+  ar: {
+    pageTitle: 'باسم عبدالغفور عبدالقوي أحمد | موقع شخصي',
+    metaDescription: 'الموقع الشخصي لباسم عبدالغفور عبدالقوي أحمد - مدير عمليات، التجارة الإلكترونية، سلاسل الإمداد، المشتريات واللوجستيات.',
+    nav: ['نبذة','الخبرات','المهارات','الإنجازات','المشاريع','الشهادات','تواصل'],
+    cvAr: 'تحميل السيرة العربية', cvEn: 'Download English CV',
+    cardTitle: 'Operations • E-Commerce • Supply Chain', cardSubtitle: 'Transforming operations into sustainable growth',
+    statLabels: ['سنة خبرة','شهادة احترافية','مناصب وخبرات متنوعة'],
+    aboutEye: 'About Me', aboutTitle: 'نبذة احترافية',
+    aboutText: 'مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.',
+    expEye: 'Experience', expTitle: 'الخبرات العملية',
+    skillEye: 'Core Skills', skillTitle: 'المهارات الأساسية',
+    certEye: 'Certificates', certTitle: 'الشهادات المهنية', certMain: '61 شهادة احترافية',
+    certIntro: 'يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.',
+    certBtn: 'تحميل الشهادات',
+    achEye: 'Achievements', achTitle: 'الإنجازات',
+    projEye: 'Projects', projTitle: 'المشاريع',
+    contactEye: 'Contact', contactTitle: 'بيانات التواصل',
+    contactLabels: ['الموقع','الجوال','البريد','LinkedIn'],
+    footer: 'جميع الحقوق محفوظة.',
+    filterAll: 'الكل', filterAcademic: 'أكاديمية', filterProfessional: 'مهنية', filterExperience: 'خبرات', emptyCert: 'لا توجد شهادات في هذا التصنيف حالياً.',
+    groupAcademic: 'أكاديمية', groupProfessional: 'مهنية', groupExperience: 'خبرات',
+    experiences: [
+      ['2024 - الآن','مدير العمليات - شركة شاطئ الوصل التجارية NMA','إدارة عمليات التجارة الإلكترونية، متابعة مؤشرات الأداء، تطوير النمو الرقمي، والتنسيق بين الإدارات.'],
+      ['2018 - 2024','إدخال بيانات وتقنية معلومات - شركة التسويق السعودية','إدارة قواعد البيانات، إعداد التقارير، دعم الأنظمة التقنية، وتحسين جودة البيانات.'],
+      ['2012 - 2014','مندوب مبيعات ولوجستيات - MBE للشحن','إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق عمليات الشحن.'],
+      ['2009 - 2012','مشتريات خارجية، مبيعات، توزيع وتحصيل','إدارة المشتريات الدولية، الاعتمادات المستندية، التوزيع، المبيعات والتحصيل.']
+    ],
+    achievements: [
+      ['تحسين العمليات','تحليل سير العمل وتحسين الكفاءة التشغيلية بين الفرق والمنصات الرقمية.'],
+      ['تطوير الأداء الرقمي','تحسين متابعة الطلبات، التنسيق التشغيلي، ورفع جودة الأداء في التجارة الإلكترونية.'],
+      ['تحليل البيانات','إعداد تقارير تشغيلية وتحليل مؤشرات الأداء باستخدام Excel والأنظمة الداخلية.']
+    ],
+    projects: [
+      ['إدارة موقع التجارة الإلكترونية','متابعة العمليات اليومية وتحسين تجربة الطلبات وربط الأعمال الرقمية بالعمليات التشغيلية.'],
+      ['تقارير Excel تشغيلية','تنظيم بيانات المبيعات والمخزون وإعداد تقارير تساعد في اتخاذ القرار.'],
+      ['أدوات Python مساعدة','استخدام Python في معالجة البيانات والأتمتة وتحسين كفاءة الأعمال المتكررة.']
+    ]
+  },
+  en: {
+    pageTitle: 'Basem Abdulghafor Abdulqawi Ahmed | Personal Portfolio',
+    metaDescription: 'The personal portfolio of Basem Abdulghafor Abdulqawi Ahmed - Operations Manager, E-Commerce, Supply Chain, Purchasing and Logistics.',
+    nav: ['About','Experience','Skills','Achievements','Projects','Certificates','Contact'],
+    cvAr: 'Download Arabic CV', cvEn: 'Download English CV',
+    cardTitle: 'Operations • E-Commerce • Supply Chain', cardSubtitle: 'Transforming operations into sustainable growth',
+    statLabels: ['Years of Experience','Professional Certificates','Roles & Experiences'],
+    aboutEye: 'About Me', aboutTitle: 'Professional Summary',
+    aboutText: 'Professional Operations Manager with extensive experience in improving operational processes, vendor management, shipping and import coordination, e-commerce platform operations, and digital business strategy development. Strong background in data management, systems, operational reporting, and team leadership to achieve higher efficiency and measurable results.',
+    expEye: 'Experience', expTitle: 'Professional Experience',
+    skillEye: 'Core Skills', skillTitle: 'Core Skills',
+    certEye: 'Certificates', certTitle: 'Professional Certificates', certMain: '61 Professional Certificates',
+    certIntro: 'Browse all certificate names, download the certificates PDF file, and manage certificate names or add new certificates from the admin dashboard.',
+    certBtn: 'Download Certificates',
+    achEye: 'Achievements', achTitle: 'Achievements',
+    projEye: 'Projects', projTitle: 'Projects',
+    contactEye: 'Contact', contactTitle: 'Contact Information',
+    contactLabels: ['Location','Mobile','Email','LinkedIn'],
+    footer: 'All rights reserved.',
+    filterAll: 'All', filterAcademic: 'Academic', filterProfessional: 'Professional', filterExperience: 'Experience', emptyCert: 'No certificates in this category yet.',
+    groupAcademic: 'Academic', groupProfessional: 'Professional', groupExperience: 'Experience',
+    experiences: [
+      ['2024 - Present','Operations Manager - NMA Trading Company','Managing e-commerce operations, monitoring KPIs, developing digital growth, and coordinating between departments.'],
+      ['2018 - 2024','Data Entry & IT Employee - Saudi Marketing Company','Managing databases, preparing reports, supporting technical systems, and improving data quality.'],
+      ['2012 - 2014','Sales & Logistics Representative - MBE Shipping','Managing air and sea freight operations, following up with clients, and coordinating shipments.'],
+      ['2009 - 2012','International Purchasing, Sales, Distribution & Collection','Managing international purchasing, letters of credit, distribution, sales, and collection.']
+    ],
+    achievements: [
+      ['Operational Improvement','Analyzed workflows and improved operational efficiency across teams and digital platforms.'],
+      ['Digital Performance Development','Improved order follow-up, operational coordination, and e-commerce performance quality.'],
+      ['Data Analysis','Prepared operational reports and analyzed KPIs using Excel and internal systems.']
+    ],
+    projects: [
+      ['E-Commerce Website Operations','Managed daily operations and improved order experience by connecting digital business with operational workflows.'],
+      ['Operational Excel Reports','Organized sales and inventory data and prepared reports that support decision-making.'],
+      ['Python Support Tools','Used Python for data processing, automation, and improving repetitive business tasks.']
+    ]
+  }
+};
+
+function setText(selector, value){
+  const el = document.querySelector(selector);
+  if (el && value !== undefined) el.textContent = value;
+}
+function applyStaticCards(selector, items){
+  const cards = document.querySelectorAll(selector + ' article');
+  cards.forEach((card, i) => {
+    if (!items[i]) return;
+    const h = card.querySelector('h3');
+    const p = card.querySelector('p');
+    if (h) h.textContent = items[i][0];
+    if (p) p.textContent = items[i][1];
+  });
+}
+function applyStaticExperiences(items){
+  const cards = document.querySelectorAll('#experience .timeline article');
+  cards.forEach((card, i) => {
+    if (!items[i]) return;
+    const span = card.querySelector('span');
+    const h = card.querySelector('h3');
+    const p = card.querySelector('p');
+    if (span) span.textContent = items[i][0];
+    if (h) h.textContent = items[i][1];
+    if (p) p.textContent = items[i][2];
+  });
+}
+function applyLanguage(lang){
+  currentLang = lang || 'ar';
+  localStorage.setItem('basemLang', currentLang);
+  const t = langContent[currentLang];
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  document.getElementById('langToggle').textContent = currentLang === 'ar' ? 'EN' : 'AR';
+  document.title = t.pageTitle;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute('content', t.metaDescription);
+  const btn = document.getElementById('langToggle');
+  if (btn) btn.textContent = currentLang === 'ar' ? 'EN' : 'AR';
   document.querySelectorAll('[data-ar][data-en]').forEach(el => el.textContent = el.dataset[currentLang]);
-};
+  document.querySelectorAll('#nav a').forEach((a, i) => { if (t.nav[i]) a.textContent = t.nav[i]; });
+  const heroButtons = document.querySelectorAll('.hero-buttons a');
+  if (heroButtons[0]) heroButtons[0].textContent = t.cvAr;
+  if (heroButtons[1]) heroButtons[1].textContent = t.cvEn;
+  setText('#cardTitle', t.cardTitle); setText('#cardSubtitle', t.cardSubtitle);
+  document.querySelectorAll('.stats span').forEach((s, i) => { if (t.statLabels[i]) s.textContent = t.statLabels[i]; });
+  const sections = [
+    ['#about', t.aboutEye, t.aboutTitle], ['#experience', t.expEye, t.expTitle], ['#skills', t.skillEye, t.skillTitle],
+    ['#certificates', t.certEye, t.certTitle], ['#achievements', t.achEye, t.achTitle], ['#projects', t.projEye, t.projTitle]
+  ];
+  sections.forEach(([id, eye, title]) => { setText(id + ' .eyebrow', eye); setText(id + ' .section-title h2', title); });
+  setText('#contact .eyebrow', t.contactEye); setText('#contact h2', t.contactTitle);
+  setText('#aboutText', t.aboutText);
+  setText('#certificatesTitle', t.certMain);
+  setText('#certificatesIntro', t.certIntro);
+  setText('#certDownloadBtn', t.certBtn);
+  applyStaticExperiences(t.experiences);
+  applyStaticCards('#achievementsGrid', t.achievements);
+  applyStaticCards('#projectsGrid', t.projects);
+  renderContactFields(getPortfolioData());
+  const footer = document.querySelector('footer');
+  if (footer) footer.innerHTML = `© <span id="year">${new Date().getFullYear()}</span> ${currentLang === 'ar' ? 'باسم عبدالغفور عبدالقوي أحمد' : 'Basem Abdulghafor Abdulqawi Ahmed'}. ${t.footer}`;
+  renderCertificates(getPortfolioData());
+}
+
+const langToggle = document.getElementById('langToggle');
+if (langToggle) langToggle.onclick = () => applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
 
 const reveal = () => {
   document.querySelectorAll('.reveal').forEach(el => {
@@ -441,13 +673,13 @@ function renderCertificates(data){
   if (!wrap) return;
   const certificates = Array.isArray(data.certificates) && data.certificates.length ? data.certificates : defaultCertificates;
   const title = document.getElementById('certificatesTitle');
-  if (title) title.textContent = (data.certificatesTitle || certificates.length + ' شهادة احترافية');
+  if (title) title.textContent = data.certificatesTitle ? (currentLang === 'en' ? (data.certificatesTitleEn || data.certificatesTitle) : data.certificatesTitle) : (currentLang === 'en' ? certificates.length + ' Professional Certificates' : certificates.length + ' شهادة احترافية');
   const intro = document.getElementById('certificatesIntro');
-  if (intro && data.certificatesIntro) intro.textContent = data.certificatesIntro;
+  if (intro && data.certificatesIntro) intro.textContent = currentLang === 'en' ? (data.certificatesIntroEn || langContent.en.certIntro) : data.certificatesIntro;
   const btn = document.getElementById('certDownloadBtn');
   if (btn) {
     btn.href = data.certificatesFile || 'assets/certificates/Basem_Certificates_61.pdf';
-    btn.textContent = data.certificatesButton || 'تحميل الشهادات';
+    btn.textContent = data.certificatesButton ? (currentLang === 'en' ? (data.certificatesButtonEn || langContent.en.certBtn) : data.certificatesButton) : langContent[currentLang].certBtn;
   }
   renderCertificateFilters(certificates);
   displayCertificates(certificates, 'all');
@@ -470,24 +702,28 @@ function displayCertificates(certificates, selectedGroup){
   const filtered = selectedGroup === 'all' ? certificates : certificates.filter(c => getCertificateGroup(c.category) === selectedGroup);
   wrap.innerHTML = filtered.map((c, i) => {
     const group = getCertificateGroup(c.category);
+    const shown = getCertificateDisplay(c);
+    const groupLabel = currentLang === 'en' ? (group === 'أكاديمية' ? langContent.en.groupAcademic : group === 'خبرات' ? langContent.en.groupExperience : langContent.en.groupProfessional) : group;
+    const categoryLabel = currentLang === 'en' ? shown.category : (c.category || '');
     return `
     <article class="certificate-card" data-group="${escapeHtml(group)}">
       <span class="cert-num">${String(i + 1).padStart(2,'0')}</span>
-      <h3>${escapeHtml(c.name || '')}</h3>
-      <p>${escapeHtml(c.issuer || '')}</p>
-      <small>${escapeHtml(group)}${c.category ? ' • ' + escapeHtml(c.category) : ''}${c.date ? ' • ' + escapeHtml(c.date) : ''}</small>
+      <h3>${escapeHtml(shown.name || '')}</h3>
+      <p>${escapeHtml(shown.issuer || '')}</p>
+      <small>${escapeHtml(groupLabel)}${categoryLabel ? ' • ' + escapeHtml(categoryLabel) : ''}${c.date ? ' • ' + escapeHtml(c.date) : ''}</small>
     </article>
-  `}).join('') || '<p class="empty-note">لا توجد شهادات في هذا التصنيف حالياً.</p>';
+  `}).join('') || `<p class="empty-note">${langContent[currentLang].emptyCert}</p>`;
 }
 
 function renderCertificateFilters(certificates){
   const filters = document.getElementById('certificateFilters');
   if (!filters) return;
+  const t = langContent[currentLang] || langContent.ar;
   const buttons = [
-    {key:'all', label:'الكل', count:certificates.length},
-    {key:'أكاديمية', label:'أكاديمية', count:certificates.filter(c => getCertificateGroup(c.category) === 'أكاديمية').length},
-    {key:'مهنية', label:'مهنية', count:certificates.filter(c => getCertificateGroup(c.category) === 'مهنية').length},
-    {key:'خبرات', label:'خبرات', count:certificates.filter(c => getCertificateGroup(c.category) === 'خبرات').length}
+    {key:'all', label:t.filterAll, count:certificates.length},
+    {key:'أكاديمية', label:t.filterAcademic, count:certificates.filter(c => getCertificateGroup(c.category) === 'أكاديمية').length},
+    {key:'مهنية', label:t.filterProfessional, count:certificates.filter(c => getCertificateGroup(c.category) === 'مهنية').length},
+    {key:'خبرات', label:t.filterExperience, count:certificates.filter(c => getCertificateGroup(c.category) === 'خبرات').length}
   ];
   filters.innerHTML = buttons.map((b, index) => `<button class="filter-btn ${index === 0 ? 'active' : ''}" data-group="${escapeHtml(b.key)}">${escapeHtml(b.label)} <span>${b.count}</span></button>`).join('');
   filters.querySelectorAll('.filter-btn').forEach(btn => {
@@ -509,10 +745,56 @@ function normalizeUrl(value){
   return v;
 }
 
+const contactLabelTranslations = {
+  'الموقع': 'Location',
+  'العنوان': 'Address',
+  'الجوال': 'Mobile',
+  'الهاتف': 'Phone',
+  'رقم الجوال': 'Mobile',
+  'رقم الهاتف': 'Phone',
+  'البريد': 'Email',
+  'البريد الإلكتروني': 'Email',
+  'الايميل': 'Email',
+  'الإيميل': 'Email',
+  'لينكدإن': 'LinkedIn',
+  'لينكد ان': 'LinkedIn',
+  'LinkedIn': 'LinkedIn',
+  'واتساب': 'WhatsApp',
+  'whatsapp': 'WhatsApp',
+  'الموقع الإلكتروني': 'Website',
+  'الموقع الالكتروني': 'Website',
+  'GitHub': 'GitHub',
+  'جيت هب': 'GitHub'
+};
+
+const contactValueTranslations = {
+  'الدمام، المملكة العربية السعودية': 'Dammam, Saudi Arabia',
+  'الدمام، السعودية': 'Dammam, Saudi Arabia',
+  'المملكة العربية السعودية': 'Saudi Arabia'
+};
+
+function translateContactLabel(label){
+  const value = String(label || '').trim();
+  if (currentLang !== 'en') return value;
+  return contactLabelTranslations[value] || value;
+}
+
+function translateContactValue(value){
+  const text = String(value || '').trim();
+  if (currentLang !== 'en') return text;
+  return contactValueTranslations[text] || text;
+}
+
 function renderContactFields(data){
   const wrap = document.getElementById('contactFields');
   if (!wrap) return;
-  const fallback = [
+  data = data || {};
+  const fallback = currentLang === 'en' ? [
+    {label:'Location', value:'Dammam, Saudi Arabia', link:''},
+    {label:'Mobile', value:'+966504319217', link:'tel:+966504319217'},
+    {label:'Email', value:data.email || 'basemalshameri6@gmail.com', link:'mailto:' + (data.email || 'basemalshameri6@gmail.com')},
+    {label:'LinkedIn', value:'www.linkedin.com/in/basem-al-shameri-b1a848395', link:data.linkedin || 'https://www.linkedin.com/in/basem-al-shameri-b1a848395'}
+  ] : [
     {label:'الموقع', value:'الدمام، المملكة العربية السعودية', link:''},
     {label:'الجوال', value:'+966504319217', link:'tel:+966504319217'},
     {label:'البريد', value:data.email || 'basemalshameri6@gmail.com', link:'mailto:' + (data.email || 'basemalshameri6@gmail.com')},
@@ -520,10 +802,12 @@ function renderContactFields(data){
   ];
   const fields = Array.isArray(data.contactFields) && data.contactFields.length ? data.contactFields : fallback;
   wrap.innerHTML = fields.filter(f => f && (f.label || f.value)).map(f => {
-    const label = escapeHtml(f.label || '');
-    const value = escapeHtml(f.value || '');
+    const labelText = currentLang === 'en' ? (f.labelEn || f.englishLabel || translateContactLabel(f.label || '')) : (f.label || f.labelAr || '');
+    const valueText = currentLang === 'en' ? (f.valueEn || f.englishValue || translateContactValue(f.value || '')) : (f.value || f.valueAr || '');
+    const label = escapeHtml(labelText);
+    const value = escapeHtml(valueText);
     const link = String(f.link || '').trim();
-    const autoLink = normalizeUrl(link || f.value);
+    const autoLink = normalizeUrl(link || f.value || valueText);
     const content = autoLink && autoLink !== '#' ? `<a href="${escapeHtml(autoLink)}" target="_blank" rel="noopener">${value}</a>` : value;
     return `<p><strong>${label}:</strong> ${content}</p>`;
   }).join('');
@@ -580,3 +864,4 @@ function applyPortfolioData(){
 }
 
 applyPortfolioData();
+applyLanguage(currentLang);
