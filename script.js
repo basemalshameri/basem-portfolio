@@ -550,6 +550,106 @@ const langContent = {
   }
 };
 
+
+const generalTranslations = {
+  'باسم عبدالغفور عبدالقوي أحمد': 'Basem Abdulghafor Abdulqawi Ahmed',
+  'مدير عمليات | التجارة الإلكترونية | سلاسل الإمداد': 'Operations Manager | E-Commerce Operations | Supply Chain',
+  'أكثر من 15 عامًا من الخبرة في إدارة العمليات، المشتريات، اللوجستيات، سلاسل الإمداد، التجارة الإلكترونية، تحليل البيانات والتحول الرقمي.': 'Over 15 years of experience in operations management, purchasing, logistics, supply chain, e-commerce, data analysis, and digital transformation.',
+  'سنة خبرة': 'Years of Experience',
+  'شهادة احترافية': 'Professional Certificates',
+  'مناصب وخبرات متنوعة': 'Roles & Experiences',
+  'نبذة احترافية': 'Professional Summary',
+  'مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.': 'Professional Operations Manager with extensive experience in improving operational processes, vendor management, shipping and import coordination, e-commerce platform operations, and digital business strategy development. Strong background in data management, systems, operational reporting, and team leadership to achieve higher efficiency and measurable results.',
+  'الخبرات العملية': 'Professional Experience',
+  'المهارات الأساسية': 'Core Skills',
+  'الشهادات المهنية': 'Professional Certificates',
+  'الإنجازات': 'Achievements',
+  'المشاريع': 'Projects',
+  'بيانات التواصل': 'Contact Information',
+  'تحميل السيرة العربية': 'Download Arabic CV',
+  'تحميل الشهادات': 'Download Certificates',
+  '61 شهادة احترافية': '61 Professional Certificates',
+  'يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.': 'Browse all certificate names, download the certificates PDF file, and manage certificate names or add new certificates from the admin dashboard.',
+  '2024 - الآن': '2024 - Present',
+  'مدير العمليات - شركة شاطئ الوصل التجارية NMA': 'Operations Manager - NMA Trading Company',
+  'إدارة عمليات التجارة الإلكترونية، متابعة مؤشرات الأداء، تطوير النمو الرقمي، والتنسيق بين الإدارات.': 'Managing e-commerce operations, monitoring KPIs, developing digital growth, and coordinating between departments.',
+  'إدخال بيانات وتقنية معلومات - شركة التسويق السعودية': 'Data Entry & IT Employee - Saudi Marketing Company',
+  'إدارة قواعد البيانات، إعداد التقارير، دعم الأنظمة التقنية، وتحسين جودة البيانات.': 'Managing databases, preparing reports, supporting technical systems, and improving data quality.',
+  'مندوب مبيعات ولوجستيات - MBE للشحن': 'Sales & Logistics Representative - MBE Shipping',
+  'إدارة عمليات الشحن الجوي والبحري، متابعة العملاء، وتنسيق عمليات الشحن.': 'Managing air and sea freight operations, following up with clients, and coordinating shipments.',
+  'مشتريات خارجية، مبيعات، توزيع وتحصيل': 'International Purchasing, Sales, Distribution & Collection',
+  'إدارة المشتريات الدولية، الاعتمادات المستندية، التوزيع، المبيعات والتحصيل.': 'Managing international purchasing, letters of credit, distribution, sales, and collection.',
+  'تحسين العمليات': 'Operational Improvement',
+  'تحليل سير العمل وتحسين الكفاءة التشغيلية بين الفرق والمنصات الرقمية.': 'Analyzed workflows and improved operational efficiency across teams and digital platforms.',
+  'تطوير الأداء الرقمي': 'Digital Performance Development',
+  'تحسين متابعة الطلبات، التنسيق التشغيلي، ورفع جودة الأداء في التجارة الإلكترونية.': 'Improved order follow-up, operational coordination, and e-commerce performance quality.',
+  'تحليل البيانات': 'Data Analysis',
+  'إعداد تقارير تشغيلية وتحليل مؤشرات الأداء باستخدام Excel والأنظمة الداخلية.': 'Prepared operational reports and analyzed KPIs using Excel and internal systems.',
+  'إدارة موقع التجارة الإلكترونية': 'E-Commerce Website Operations',
+  'متابعة العمليات اليومية وتحسين تجربة الطلبات وربط الأعمال الرقمية بالعمليات التشغيلية.': 'Managed daily operations and improved order experience by connecting digital business with operational workflows.',
+  'تقارير Excel تشغيلية': 'Operational Excel Reports',
+  'تنظيم بيانات المبيعات والمخزون وإعداد تقارير تساعد في اتخاذ القرار.': 'Organized sales and inventory data and prepared reports that support decision-making.',
+  'أدوات Python مساعدة': 'Python Support Tools',
+  'استخدام Python في معالجة البيانات والأتمتة وتحسين كفاءة الأعمال المتكررة.': 'Used Python for data processing, automation, and improving repetitive business tasks.',
+  'قسم مخصص': 'Custom Section',
+  'حقل جديد': 'New Field',
+  'خبرة عملية جديدة': 'New Professional Experience',
+  'اكتب وصف الخبرة هنا': 'Write the experience description here'
+};
+
+function translateGenericText(value){
+  const text = String(value || '').trim();
+  if (!text || currentLang !== 'en') return text;
+  if (generalTranslations[text]) return generalTranslations[text];
+  if (certificateTranslations[text]) return certificateTranslations[text];
+  if (contactLabelTranslations[text]) return contactLabelTranslations[text];
+  if (contactValueTranslations[text]) return contactValueTranslations[text];
+  return text
+    .replace(/الآن/g, 'Present')
+    .replace(/شركة شاطئ الوصل التجارية/g, 'NMA Trading Company')
+    .replace(/التجارة الإلكترونية/g, 'E-Commerce')
+    .replace(/سلاسل الإمداد/g, 'Supply Chain')
+    .replace(/إدارة العمليات/g, 'Operations Management')
+    .replace(/إدارة/g, 'Management')
+    .replace(/المشتريات/g, 'Purchasing')
+    .replace(/اللوجستيات/g, 'Logistics')
+    .replace(/المخزون/g, 'Inventory')
+    .replace(/المبيعات/g, 'Sales')
+    .replace(/التسويق الرقمي/g, 'Digital Marketing')
+    .replace(/تحليل البيانات/g, 'Data Analysis')
+    .replace(/إدارة المشاريع/g, 'Project Management')
+    .replace(/الموارد البشرية/g, 'Human Resources')
+    .replace(/المالية/g, 'Finance')
+    .replace(/البرمجة/g, 'Programming')
+    .replace(/شهادة/g, 'Certificate')
+    .replace(/شهادات/g, 'Certificates')
+    .replace(/خبرة/g, 'Experience')
+    .replace(/خبرات/g, 'Experiences')
+    .replace(/مهارات/g, 'Skills')
+    .replace(/مشاريع/g, 'Projects')
+    .replace(/إنجازات/g, 'Achievements');
+}
+
+function getLocalizedValue(data, key, fallback){
+  data = data || {};
+  const enKey = key + 'En';
+  const englishKey = 'english' + key.charAt(0).toUpperCase() + key.slice(1);
+  if (currentLang === 'en') {
+    if (data[enKey]) return data[enKey];
+    if (data[englishKey]) return data[englishKey];
+    if (data[key]) return translateGenericText(data[key]);
+    if (fallback !== undefined) return translateGenericText(fallback);
+    return '';
+  }
+  return data[key] || fallback || '';
+}
+
+function localizeItemValue(item, key){
+  item = item || {};
+  if (currentLang === 'en') return item[key + 'En'] || item['english' + key.charAt(0).toUpperCase() + key.slice(1)] || translateGenericText(item[key] || '');
+  return item[key] || '';
+}
+
 function setText(selector, value){
   const el = document.querySelector(selector);
   if (el && value !== undefined) el.textContent = value;
@@ -639,10 +739,10 @@ function escapeHtml(str){
 function renderCustomSections(sections){
   const wrap = document.getElementById('customSections');
   if (!wrap) return;
-  wrap.innerHTML = (sections || []).filter(s => s && s.title).map((s, i) => `
+  wrap.innerHTML = (sections || []).filter(s => s && (s.title || s.titleEn || s.content || s.contentEn)).map((s, i) => `
     <section class="section custom-section reveal visible" id="custom-${i+1}">
-      <div class="section-title"><p class="eyebrow">${escapeHtml(s.label || 'Custom Section')}</p><h2>${escapeHtml(s.title)}</h2></div>
-      <div class="panel"><p>${escapeHtml(s.content || '').replace(/\n/g, '<br>')}</p></div>
+      <div class="section-title"><p class="eyebrow">${escapeHtml(localizeItemValue(s, 'label') || (currentLang === 'en' ? 'Custom Section' : 'قسم مخصص'))}</p><h2>${escapeHtml(localizeItemValue(s, 'title'))}</h2></div>
+      <div class="panel"><p>${escapeHtml(localizeItemValue(s, 'content')).replace(/\n/g, '<br>')}</p></div>
     </section>
   `).join('');
 }
@@ -651,21 +751,21 @@ function renderExperiences(experiences){
   const wrap = document.querySelector('#experience .timeline');
   if (!wrap || !Array.isArray(experiences) || experiences.length === 0) return;
   wrap.innerHTML = experiences.map(x => `
-    <article><span>${escapeHtml(x.period || '')}</span><h3>${escapeHtml(x.title || '')}</h3><p>${escapeHtml(x.description || '').replace(/\n/g,'<br>')}</p></article>
+    <article><span>${escapeHtml(localizeItemValue(x, 'period'))}</span><h3>${escapeHtml(localizeItemValue(x, 'title'))}</h3><p>${escapeHtml(localizeItemValue(x, 'description')).replace(/\n/g,'<br>')}</p></article>
   `).join('');
 }
 
 function renderSkills(skills){
   const wrap = document.querySelector('#skills .skills-grid');
   if (!wrap || !Array.isArray(skills) || skills.length === 0) return;
-  wrap.innerHTML = skills.map(skill => `<span>${escapeHtml(skill)}</span>`).join('');
+  wrap.innerHTML = skills.map(skill => `<span>${escapeHtml(translateGenericText(skill))}</span>`).join('');
 }
 
 function renderCards(selector, items){
   const wrap = document.querySelector(selector);
   if (!wrap || !Array.isArray(items) || items.length === 0) return;
   wrap.innerHTML = items.map(item => `
-    <article><h3>${escapeHtml(item.title || '')}</h3><p>${escapeHtml(item.description || '').replace(/\n/g,'<br>')}</p></article>
+    <article><h3>${escapeHtml(localizeItemValue(item, 'title'))}</h3><p>${escapeHtml(localizeItemValue(item, 'description')).replace(/\n/g,'<br>')}</p></article>
   `).join('');
 }
 
@@ -676,13 +776,13 @@ function renderCertificates(data){
   if (!wrap) return;
   const certificates = Array.isArray(data.certificates) && data.certificates.length ? data.certificates : defaultCertificates;
   const title = document.getElementById('certificatesTitle');
-  if (title) title.textContent = data.certificatesTitle ? (currentLang === 'en' ? (data.certificatesTitleEn || data.certificatesTitle) : data.certificatesTitle) : (currentLang === 'en' ? certificates.length + ' Professional Certificates' : certificates.length + ' شهادة احترافية');
+  if (title) title.textContent = data.certificatesTitle ? getLocalizedValue(data, 'certificatesTitle', langContent[currentLang].certMain) : (currentLang === 'en' ? certificates.length + ' Professional Certificates' : certificates.length + ' شهادة احترافية');
   const intro = document.getElementById('certificatesIntro');
-  if (intro && data.certificatesIntro) intro.textContent = currentLang === 'en' ? (data.certificatesIntroEn || langContent.en.certIntro) : data.certificatesIntro;
+  if (intro) intro.textContent = data.certificatesIntro ? getLocalizedValue(data, 'certificatesIntro', langContent[currentLang].certIntro) : langContent[currentLang].certIntro;
   const btn = document.getElementById('certDownloadBtn');
   if (btn) {
     btn.href = data.certificatesFile || 'assets/certificates/Basem_Certificates_61.pdf';
-    btn.textContent = data.certificatesButton ? (currentLang === 'en' ? (data.certificatesButtonEn || langContent.en.certBtn) : data.certificatesButton) : langContent[currentLang].certBtn;
+    btn.textContent = data.certificatesButton ? getLocalizedValue(data, 'certificatesButton', langContent[currentLang].certBtn) : langContent[currentLang].certBtn;
   }
   renderCertificateFilters(certificates);
   displayCertificates(certificates, 'all');
@@ -849,7 +949,9 @@ function applyPortfolioData(){
   applyDesign(data.design);
   document.querySelectorAll('[data-edit]').forEach(el => {
     const key = el.dataset.edit;
-    if (data[key]) el.textContent = data[key];
+    const fallback = el.dataset[currentLang] || el.textContent;
+    const value = getLocalizedValue(data, key, fallback);
+    if (value) el.textContent = value;
   });
   if (data.linkedin) {
     document.querySelectorAll('a[href*="linkedin.com/in"]').forEach(a => a.href = data.linkedin);
