@@ -14,66 +14,66 @@ const defaultCertificates = [
   },
   {
     "name": "أساسيات التسويق الرقمي",
-    "issuer": "Google",
+    "issuer": "جوجل",
     "date": "2022",
     "category": "التسويق الرقمي"
   },
   {
-    "name": "Designing the Future of Work",
-    "issuer": "UNSW Sydney / Coursera",
+    "name": "تصميم مستقبل العمل",
+    "issuer": "جامعة نيو ساوث ويلز سيدني / كورسيرا",
     "date": "2022",
     "category": "الإدارة والعمل"
   },
   {
-    "name": "Preparing to Manage Human Resources",
-    "issuer": "University of Minnesota / Coursera",
+    "name": "الاستعداد لإدارة الموارد البشرية",
+    "issuer": "جامعة مينيسوتا / كورسيرا",
     "date": "2022",
     "category": "الموارد البشرية"
   },
   {
-    "name": "Create an Employee Feedback Survey with TypeForm",
-    "issuer": "Coursera Project Network",
+    "name": "إنشاء استبيان ملاحظات الموظفين باستخدام تايب فورم",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "الموارد البشرية"
   },
   {
-    "name": "Develop a Company Website with Wix",
-    "issuer": "Coursera Project Network",
+    "name": "تطوير موقع شركة باستخدام ويكس",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "المواقع الرقمية"
   },
   {
-    "name": "Introduction to Microsoft Excel",
-    "issuer": "Coursera Project Network",
+    "name": "مقدمة إلى مايكروسوفت إكسل",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "تحليل البيانات"
   },
   {
-    "name": "Create a Custom Marketing Analytics Dashboard in Data Studio",
-    "issuer": "Coursera Project Network",
+    "name": "إنشاء لوحة تحليلات تسويقية مخصصة في داتا ستوديو",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "تحليل البيانات"
   },
   {
-    "name": "Create a Project Charter with Google Docs",
-    "issuer": "Coursera Project Network",
+    "name": "إنشاء ميثاق مشروع باستخدام مستندات جوجل",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "إدارة المشاريع"
   },
   {
-    "name": "Introduction to Business Analysis Using Spreadsheets: Basics",
-    "issuer": "Coursera Project Network",
+    "name": "مقدمة في تحليل الأعمال باستخدام الجداول الإلكترونية: الأساسيات",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "تحليل الأعمال"
   },
   {
-    "name": "Construct Stock Market Indices",
-    "issuer": "Coursera Project Network",
+    "name": "إنشاء مؤشرات سوق الأسهم",
+    "issuer": "شبكة مشاريع كورسيرا",
     "date": "2022",
     "category": "الأعمال والمالية"
   },
   {
-    "name": "International Commercial Correspondence",
+    "name": "المراسلات التجارية الدولية",
     "issuer": "عالم الدواء للتجارة والاستثمار",
     "date": "2009",
     "category": "الخبرة العملية"
@@ -85,61 +85,61 @@ const defaultCertificates = [
     "category": "الخبرة العملية"
   },
   {
-    "name": "Accounting for Non-Accountants",
+    "name": "المحاسبة لغير المحاسبين",
     "issuer": "إدراك",
     "date": "2022",
     "category": "المالية"
   },
   {
-    "name": "How to Do a Financial Feasibility Study for a Business",
+    "name": "كيفية عمل دراسة الجدوى المالية للمشروع",
     "issuer": "إدراك",
     "date": "2022",
     "category": "المالية"
   },
   {
-    "name": "Programming VBA using Excel",
+    "name": "البرمجة باستخدام إكسل في بي إيه",
     "issuer": "إدراك",
     "date": "2022",
-    "category": "Excel والبرمجة"
+    "category": "إكسل والبرمجة"
   },
   {
-    "name": "Operations Management",
+    "name": "إدارة العمليات",
     "issuer": "إدراك",
     "date": "2023",
     "category": "إدارة العمليات"
   },
   {
-    "name": "Project Management",
+    "name": "إدارة المشاريع",
     "issuer": "إدراك",
     "date": "2023",
     "category": "إدارة المشاريع"
   },
   {
-    "name": "Project Management Foundation",
+    "name": "أساسيات إدارة المشاريع",
     "issuer": "إدراك",
     "date": "2023",
     "category": "إدارة المشاريع"
   },
   {
-    "name": "Project Planning",
+    "name": "تخطيط المشروع",
     "issuer": "إدراك",
     "date": "2023",
     "category": "إدارة المشاريع"
   },
   {
-    "name": "The Project: From Execution to Closure",
+    "name": "المشروع: من التنفيذ إلى الإغلاق",
     "issuer": "إدراك",
     "date": "2023",
     "category": "إدارة المشاريع"
   },
   {
-    "name": "Introduction to Python Programming",
+    "name": "مقدمة إلى البرمجة باستخدام لغة بايثون",
     "issuer": "إدراك",
     "date": "2022",
     "category": "البرمجة"
   },
   {
-    "name": "Safe Investments During An Economic Crisis",
+    "name": "الاستثمار الآمن في الأزمات الاقتصادية",
     "issuer": "إدراك",
     "date": "2023",
     "category": "الأعمال والمالية"
@@ -175,10 +175,10 @@ const defaultCertificates = [
     "category": "إدارة المشاريع"
   },
   {
-    "name": "البرمجة باستخدام Excel VBA",
+    "name": "البرمجة باستخدام إكسل في بي إيه",
     "issuer": "إدراك",
     "date": "2022",
-    "category": "Excel والبرمجة"
+    "category": "إكسل والبرمجة"
   },
   {
     "name": "تخطيط المشروع",
@@ -205,13 +205,13 @@ const defaultCertificates = [
     "category": "البرمجة"
   },
   {
-    "name": "Selling Smarter",
+    "name": "البيع بذكاء",
     "issuer": "إدراك",
     "date": "2024",
     "category": "المبيعات"
   },
   {
-    "name": "Introduction in Artificial Intelligence",
+    "name": "مقدمة إلى الذكاء الاصطناعي",
     "issuer": "إدراك",
     "date": "2026",
     "category": "الذكاء الاصطناعي"
@@ -284,31 +284,31 @@ const defaultCertificates = [
   },
   {
     "name": "برنامج المشتريات واللوجستيات",
-    "issuer": "DisasterReady",
+    "issuer": "ديساستر ريدي",
     "date": "2024",
     "category": "المشتريات واللوجستيات"
   },
   {
     "name": "أساسيات المهارات القيادية",
-    "issuer": "DisasterReady",
+    "issuer": "ديساستر ريدي",
     "date": "2025",
     "category": "القيادة"
   },
   {
     "name": "أساسيات البحث عن منح",
-    "issuer": "DisasterReady",
+    "issuer": "ديساستر ريدي",
     "date": "2025",
     "category": "التطوير المهني"
   },
   {
-    "name": "Effective Communication in the Workplace",
-    "issuer": "OpenLearn",
+    "name": "التواصل الفعال في بيئة العمل",
+    "issuer": "أوبن ليرن",
     "date": "2025",
     "category": "الاتصال"
   },
   {
-    "name": "Corporate Governance Essentials: From Theory to Practice",
-    "issuer": "OpenLearn Create",
+    "name": "أساسيات حوكمة الشركات: من النظرية إلى التطبيق",
+    "issuer": "أوبن ليرن كرييت",
     "date": "2025",
     "category": "الحوكمة"
   },
@@ -370,6 +370,32 @@ const defaultCertificates = [
 
 
 const certificateTranslations = {
+  "إنشاء استبيان ملاحظات الموظفين باستخدام تايب فورم": "Create an Employee Feedback Survey with TypeForm",
+  "تطوير موقع شركة باستخدام ويكس": "Develop a Company Website with Wix",
+  "إنشاء لوحة تحليلات تسويقية مخصصة في داتا ستوديو": "Create a Custom Marketing Analytics Dashboard in Data Studio",
+  "إنشاء ميثاق مشروع باستخدام مستندات جوجل": "Create a Project Charter with Google Docs",
+  "البرمجة باستخدام إكسل في بي إيه": "Excel VBA Programming",
+  "إكسل والبرمجة": "Excel and Programming",
+  "جوجل": "Google",
+  "شبكة مشاريع كورسيرا": "Coursera Project Network",
+  "جامعة نيو ساوث ويلز سيدني / كورسيرا": "UNSW Sydney / Coursera",
+  "جامعة مينيسوتا / كورسيرا": "University of Minnesota / Coursera",
+  "ديساستر ريدي": "DisasterReady",
+  "أوبن ليرن": "OpenLearn",
+  "أوبن ليرن كرييت": "OpenLearn Create",
+  "تصميم مستقبل العمل": "Designing the Future of Work",
+  "الاستعداد لإدارة الموارد البشرية": "Preparing to Manage Human Resources",
+  "إنشاء استبيان ملاحظات الموظفين باستخدام تايب فورم": "Create an Employee Feedback Survey with TypeForm",
+  "تطوير موقع شركة باستخدام ويكس": "Develop a Company Website with Wix",
+  "مقدمة إلى مايكروسوفت إكسل": "Introduction to Microsoft Excel",
+  "إنشاء لوحة تحليلات تسويقية مخصصة في داتا ستوديو": "Create a Custom Marketing Analytics Dashboard in Data Studio",
+  "إنشاء ميثاق مشروع باستخدام مستندات جوجل": "Create a Project Charter with جوجل Docs",
+  "مقدمة في تحليل الأعمال باستخدام الجداول الإلكترونية: الأساسيات": "Introduction to Business Analysis Using Spreadsheets: Basics",
+  "إنشاء مؤشرات سوق الأسهم": "Construct Stock Market Indices",
+  "المراسلات التجارية الدولية": "International Commercial Correspondence",
+  "أساسيات إدارة المشاريع": "Project Management Foundation",
+  "التواصل الفعال في بيئة العمل": "Effective Communication in the Workplace",
+  "أساسيات حوكمة الشركات: من النظرية إلى التطبيق": "Corporate Governance Essentials: From Theory to Practice",
   "بكالوريوس لغة إنجليزية": "Bachelor's Degree in English Language",
   "دبلوم التنمية البشرية": "Diploma in Human Resources Development",
   "أساسيات التسويق الرقمي": "Fundamentals of Digital Marketing",
@@ -379,7 +405,7 @@ const certificateTranslations = {
   "إدارة العمليات": "Operations Management",
   "الاستثمار الآمن في الأزمات الاقتصادية": "Safe Investments During Economic Crises",
   "المشروع: من التنفيذ إلى الإغلاق": "Project: From Execution to Closure",
-  "البرمجة باستخدام Excel VBA": "Excel VBA Programming",
+  "البرمجة باستخدام إكسل في بي إيه": "Excel VBA Programming",
   "تخطيط المشروع": "Project Planning",
   "المحاسبة لغير المحاسبين": "Accounting for Non-Accountants",
   "كيفية عمل دراسة الجدوى المالية للمشروع": "How to Do a Financial Feasibility Study for a Business",
@@ -426,7 +452,7 @@ const certificateTranslations = {
   "الأعمال والمالية": "Business and Finance",
   "الخبرة العملية": "Work Experience",
   "المالية": "Finance",
-  "Excel والبرمجة": "Excel and Programming",
+  "إكسل والبرمجة": "Excel and Programming",
   "إدارة العمليات": "Operations Management",
   "البرمجة": "Programming",
   "المبيعات": "Sales",
@@ -443,6 +469,52 @@ const certificateTranslations = {
   "خبرات": "Experience"
 };
 
+const certificateArabicTranslations = {
+  "Create an Employee Feedback Survey with TypeForm": "إنشاء استبيان ملاحظات الموظفين باستخدام تايب فورم",
+  "Develop a Company Website with Wix": "تطوير موقع شركة باستخدام ويكس",
+  "Create a Custom Marketing Analytics Dashboard in Data Studio": "إنشاء لوحة تحليلات تسويقية مخصصة في داتا ستوديو",
+  "Create a Project Charter with Google Docs": "إنشاء ميثاق مشروع باستخدام مستندات جوجل",
+  "Excel VBA Programming": "البرمجة باستخدام إكسل في بي إيه",
+  "Excel and Programming": "إكسل والبرمجة",
+  "Google": "جوجل",
+  "Coursera Project Network": "شبكة مشاريع كورسيرا",
+  "UNSW Sydney / Coursera": "جامعة نيو ساوث ويلز سيدني / كورسيرا",
+  "University of Minnesota / Coursera": "جامعة مينيسوتا / كورسيرا",
+  "DisasterReady": "ديساستر ريدي",
+  "OpenLearn": "أوبن ليرن",
+  "OpenLearn Create": "أوبن ليرن كرييت",
+  "Designing the Future of Work": "تصميم مستقبل العمل",
+  "Preparing to Manage Human Resources": "الاستعداد لإدارة الموارد البشرية",
+  "Create an Employee Feedback Survey with TypeForm": "إنشاء استبيان ملاحظات الموظفين باستخدام تايب فورم",
+  "Develop a Company Website with Wix": "تطوير موقع شركة باستخدام ويكس",
+  "Introduction to Microsoft Excel": "مقدمة إلى مايكروسوفت إكسل",
+  "Create a Custom Marketing Analytics Dashboard in Data Studio": "إنشاء لوحة تحليلات تسويقية مخصصة في داتا ستوديو",
+  "Create a Project Charter with جوجل Docs": "إنشاء ميثاق مشروع باستخدام مستندات جوجل",
+  "Introduction to Business Analysis Using Spreadsheets: Basics": "مقدمة في تحليل الأعمال باستخدام الجداول الإلكترونية: الأساسيات",
+  "Construct Stock Market Indices": "إنشاء مؤشرات سوق الأسهم",
+  "International Commercial Correspondence": "المراسلات التجارية الدولية",
+  "Accounting for Non-Accountants": "المحاسبة لغير المحاسبين",
+  "How to Do a Financial Feasibility Study for a Business": "كيفية عمل دراسة الجدوى المالية للمشروع",
+  "Programming VBA using Excel": "البرمجة باستخدام إكسل في بي إيه",
+  "Operations Management": "إدارة العمليات",
+  "Project Management": "إدارة المشاريع",
+  "Project Management Foundation": "أساسيات إدارة المشاريع",
+  "Project Planning": "تخطيط المشروع",
+  "The Project: From Execution to Closure": "المشروع: من التنفيذ إلى الإغلاق",
+  "Introduction to Python Programming": "مقدمة إلى البرمجة باستخدام لغة بايثون",
+  "Safe Investments During An Economic Crisis": "الاستثمار الآمن في الأزمات الاقتصادية",
+  "Selling Smarter": "البيع بذكاء",
+  "Introduction in Artificial Intelligence": "مقدمة إلى الذكاء الاصطناعي",
+  "Effective Communication in the Workplace": "التواصل الفعال في بيئة العمل",
+  "Corporate Governance Essentials: From Theory to Practice": "أساسيات حوكمة الشركات: من النظرية إلى التطبيق",
+};
+
+function translateCertificateValueToArabic(value, fallback){
+  const text = String(value || '').trim();
+  if (!text) return fallback || '';
+  return certificateArabicTranslations[text] || text;
+}
+
 function translateCertificateValue(value, fallback){
   const text = String(value || '').trim();
   if (!text) return fallback || '';
@@ -452,7 +524,11 @@ function translateCertificateValue(value, fallback){
 
 function getCertificateDisplay(c){
   if (currentLang !== 'en') {
-    return { name: c.name || '', issuer: c.issuer || '', category: c.category || '' };
+    return {
+      name: translateCertificateValueToArabic(c.name, ''),
+      issuer: translateCertificateValueToArabic(c.issuer, ''),
+      category: translateCertificateValueToArabic(c.category, '')
+    };
   }
   return {
     name: c.nameEn || c.englishName || translateCertificateValue(c.name, ''),
@@ -477,19 +553,19 @@ const langContent = {
     metaDescription: 'الموقع الشخصي لباسم عبدالغفور عبدالقوي أحمد - مدير عمليات، التجارة الإلكترونية، سلاسل الإمداد، المشتريات واللوجستيات.',
     nav: ['نبذة','الخبرات','المهارات','الإنجازات','المشاريع','الشهادات','تواصل'],
     cvAr: 'تحميل السيرة العربية', cvEn: 'Download English CV',
-    cardTitle: 'Operations • E-Commerce • Supply Chain', cardSubtitle: 'Transforming operations into sustainable growth',
+    cardTitle: 'العمليات • التجارة الإلكترونية • سلاسل الإمداد', cardSubtitle: 'تحويل العمليات إلى نمو مستدام',
     statLabels: ['سنة خبرة','شهادة احترافية','مناصب وخبرات متنوعة'],
     aboutEye: 'About Me', aboutTitle: 'نبذة احترافية',
     aboutText: 'مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.',
     expEye: 'Experience', expTitle: 'الخبرات العملية',
-    skillEye: 'Core Skills', skillTitle: 'المهارات الأساسية',
+    skillEye: 'المهارات', skillTitle: 'المهارات الأساسية',
     certEye: 'Certificates', certTitle: 'الشهادات المهنية', certMain: '61 شهادة احترافية',
     certIntro: 'يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.',
     certBtn: 'تحميل الشهادات',
     achEye: 'Achievements', achTitle: 'الإنجازات',
     projEye: 'Projects', projTitle: 'المشاريع',
     contactEye: 'Contact', contactTitle: 'بيانات التواصل',
-    contactLabels: ['الموقع','الجوال','البريد','LinkedIn'],
+    contactLabels: ['الموقع','الجوال','البريد','لينكدإن'],
     footer: 'جميع الحقوق محفوظة.',
     filterAll: 'الكل', filterAcademic: 'أكاديمية', filterProfessional: 'مهنية', filterExperience: 'خبرات', emptyCert: 'لا توجد شهادات في هذا التصنيف حالياً.',
     groupAcademic: 'أكاديمية', groupProfessional: 'مهنية', groupExperience: 'خبرات',
@@ -551,6 +627,36 @@ const langContent = {
 };
 
 
+
+const englishToArabicTranslations = {
+  'Core Skills': 'المهارات الأساسية',
+  'Skills': 'المهارات',
+  'Operations Management': 'إدارة العمليات',
+  'E-Commerce Operations': 'عمليات التجارة الإلكترونية',
+  'Supply Chain': 'سلاسل الإمداد',
+  'International Purchasing': 'المشتريات الدولية',
+  'Logistics': 'اللوجستيات',
+  'Inventory Management': 'إدارة المخزون',
+  'ERP / Odoo': 'نظام ERP / Odoo',
+  'Microsoft Excel': 'مايكروسوفت إكسل',
+  'Data Analysis': 'تحليل البيانات',
+  'Project Management': 'إدارة المشاريع',
+  'Digital Marketing': 'التسويق الرقمي',
+  'Python Basics': 'أساسيات Python',
+  'Operations Manager': 'مدير العمليات التشغيلية',
+  'Professional Experience': 'الخبرات العملية',
+  'Professional Summary': 'نبذة احترافية',
+  'Achievements': 'الإنجازات',
+  'Projects': 'المشاريع',
+  'Professional Certificates': 'الشهادات المهنية',
+  'Contact Information': 'بيانات التواصل',
+  'Operations • E-Commerce • Supply Chain': 'العمليات • التجارة الإلكترونية • سلاسل الإمداد',
+  'Transforming operations into sustainable growth': 'تحويل العمليات إلى نمو مستدام',
+  'LinkedIn': 'لينكدإن'
+};
+
+const defaultSkills = ['إدارة العمليات','عمليات التجارة الإلكترونية','سلاسل الإمداد','المشتريات الدولية','اللوجستيات','إدارة المخزون','نظام ERP / Odoo','مايكروسوفت إكسل','تحليل البيانات','إدارة المشاريع','التسويق الرقمي','أساسيات Python'];
+
 const generalTranslations = {
   'باسم عبدالغفور عبدالقوي أحمد': 'Basem Abdulghafor Abdulqawi Ahmed',
   'مدير عمليات | التجارة الإلكترونية | سلاسل الإمداد': 'Operations Manager | E-Commerce Operations | Supply Chain',
@@ -562,6 +668,12 @@ const generalTranslations = {
   'مدير عمليات محترف بخبرة واسعة في تحسين العمليات التشغيلية، إدارة الموردين، تنسيق الشحن والاستيراد، إدارة منصات التجارة الإلكترونية، وتطوير استراتيجيات الأعمال الرقمية. أمتلك خلفية قوية في إدارة البيانات، الأنظمة، التقارير التشغيلية، وقيادة فرق العمل لتحقيق كفاءة أعلى ونتائج قابلة للقياس.': 'Professional Operations Manager with extensive experience in improving operational processes, vendor management, shipping and import coordination, e-commerce platform operations, and digital business strategy development. Strong background in data management, systems, operational reporting, and team leadership to achieve higher efficiency and measurable results.',
   'الخبرات العملية': 'Professional Experience',
   'المهارات الأساسية': 'Core Skills',
+  'عمليات التجارة الإلكترونية': 'E-Commerce Operations',
+  'المشتريات الدولية': 'International Purchasing',
+  'إدارة المخزون': 'Inventory Management',
+  'نظام ERP / Odoo': 'ERP / Odoo',
+  'مايكروسوفت إكسل': 'Microsoft Excel',
+  'أساسيات Python': 'Python Basics',
   'الشهادات المهنية': 'Professional Certificates',
   'الإنجازات': 'Achievements',
   'المشاريع': 'Projects',
@@ -571,6 +683,8 @@ const generalTranslations = {
   '61 شهادة احترافية': '61 Professional Certificates',
   'يمكنك استعراض أسماء الشهادات كاملة، وتحميل ملف الشهادات PDF، كما يمكن تعديل أسماء الشهادات أو إضافة شهادات جديدة من لوحة التحكم.': 'Browse all certificate names, download the certificates PDF file, and manage certificate names or add new certificates from the admin dashboard.',
   '2024 - الآن': '2024 - Present',
+  'مدير العمليات التشغيلية': 'Operations Manager',
+  'مدير العمليات التشغيلية - شركة شاطئ الوصل التجارية NMA': 'Operations Manager - NMA Trading Company',
   'مدير العمليات - شركة شاطئ الوصل التجارية NMA': 'Operations Manager - NMA Trading Company',
   'إدارة عمليات التجارة الإلكترونية، متابعة مؤشرات الأداء، تطوير النمو الرقمي، والتنسيق بين الإدارات.': 'Managing e-commerce operations, monitoring KPIs, developing digital growth, and coordinating between departments.',
   'إدخال بيانات وتقنية معلومات - شركة التسويق السعودية': 'Data Entry & IT Employee - Saudi Marketing Company',
@@ -599,7 +713,11 @@ const generalTranslations = {
 
 function translateGenericText(value){
   const text = String(value || '').trim();
-  if (!text || currentLang !== 'en') return text;
+  if (!text) return text;
+  if (currentLang !== 'en') {
+    if (englishToArabicTranslations[text]) return englishToArabicTranslations[text];
+    return text;
+  }
   if (generalTranslations[text]) return generalTranslations[text];
   if (certificateTranslations[text]) return certificateTranslations[text];
   if (contactLabelTranslations[text]) return contactLabelTranslations[text];
@@ -607,6 +725,8 @@ function translateGenericText(value){
   return text
     .replace(/الآن/g, 'Present')
     .replace(/شركة شاطئ الوصل التجارية/g, 'NMA Trading Company')
+    .replace(/مدير العمليات التشغيلية/g, 'Operations Manager')
+    .replace(/مدير العمليات/g, 'Operations Manager')
     .replace(/التجارة الإلكترونية/g, 'E-Commerce')
     .replace(/سلاسل الإمداد/g, 'Supply Chain')
     .replace(/إدارة العمليات/g, 'Operations Management')
@@ -641,13 +761,14 @@ function getLocalizedValue(data, key, fallback){
     if (fallback !== undefined) return translateGenericText(fallback);
     return '';
   }
-  return data[key] || fallback || '';
+  const value = data[key] || fallback || '';
+  return translateGenericText(value);
 }
 
 function localizeItemValue(item, key){
   item = item || {};
   if (currentLang === 'en') return item[key + 'En'] || item['english' + key.charAt(0).toUpperCase() + key.slice(1)] || translateGenericText(item[key] || '');
-  return item[key] || '';
+  return translateGenericText(item[key] || '');
 }
 
 function setText(selector, value){
@@ -707,6 +828,7 @@ function applyLanguage(lang){
   applyStaticExperiences(t.experiences);
   applyStaticCards('#achievementsGrid', t.achievements);
   applyStaticCards('#projectsGrid', t.projects);
+  renderSkills(defaultSkills);
   renderContactFields(getPortfolioData());
   const footer = document.querySelector('footer');
   if (footer) footer.innerHTML = `© <span id="year">${new Date().getFullYear()}</span> ${currentLang === 'ar' ? 'باسم عبدالغفور عبدالقوي أحمد' : 'Basem Abdulghafor Abdulqawi Ahmed'}. ${t.footer}`;
@@ -901,11 +1023,11 @@ function renderContactFields(data){
     {label:'الموقع', value:'الدمام، المملكة العربية السعودية', link:''},
     {label:'الجوال', value:'+966504319217', link:'tel:+966504319217'},
     {label:'البريد', value:data.email || 'basemalshameri6@gmail.com', link:'mailto:' + (data.email || 'basemalshameri6@gmail.com')},
-    {label:'LinkedIn', value:'www.linkedin.com/in/basem-al-shameri-b1a848395', link:data.linkedin || 'https://www.linkedin.com/in/basem-al-shameri-b1a848395'}
+    {label:'لينكدإن', value:'www.linkedin.com/in/basem-al-shameri-b1a848395', link:data.linkedin || 'https://www.linkedin.com/in/basem-al-shameri-b1a848395'}
   ];
   const fields = Array.isArray(data.contactFields) && data.contactFields.length ? data.contactFields : fallback;
   wrap.innerHTML = fields.filter(f => f && (f.label || f.value)).map(f => {
-    const labelText = currentLang === 'en' ? (f.labelEn || f.englishLabel || translateContactLabel(f.label || '')) : (f.label || f.labelAr || '');
+    const labelText = currentLang === 'en' ? (f.labelEn || f.englishLabel || translateContactLabel(f.label || '')) : translateGenericText(f.labelAr || f.label || '');
     const valueText = currentLang === 'en' ? (f.valueEn || f.englishValue || translateContactValue(f.value || '')) : (f.value || f.valueAr || '');
     const label = escapeHtml(labelText);
     const value = escapeHtml(valueText);
