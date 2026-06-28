@@ -614,7 +614,10 @@ function applyLanguage(lang){
 }
 
 const langToggle = document.getElementById('langToggle');
-if (langToggle) langToggle.onclick = () => applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+if (langToggle) langToggle.onclick = () => {
+  applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+  applyPortfolioData();
+};
 
 const reveal = () => {
   document.querySelectorAll('.reveal').forEach(el => {
@@ -863,5 +866,5 @@ function applyPortfolioData(){
   renderCustomSections(data.sections);
 }
 
-applyPortfolioData();
 applyLanguage(currentLang);
+applyPortfolioData();

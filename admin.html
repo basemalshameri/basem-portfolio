@@ -642,7 +642,7 @@ window.removeSection=(i)=>{let d=collectData();d.sections.splice(i,1);setData(d)
 if($('darkPresetBtn')) $('darkPresetBtn').onclick=()=>setDesignPreset('dark');
 if($('lightPresetBtn')) $('lightPresetBtn').onclick=()=>setDesignPreset('light');
 if($('bluePresetBtn')) $('bluePresetBtn').onclick=()=>setDesignPreset('blue');
-$('saveBtn').onclick=()=>{const d=collectData();setData(d);if($('newPassword').value.trim()){localStorage.setItem('basemAdminPassword',$('newPassword').value.trim());$('newPassword').value=''}$('saveMsg').innerHTML='<div class="success">تم حفظ التعديلات بنجاح.</div>';$('backupText').value=JSON.stringify(d,null,2)};
+$('saveBtn').onclick=()=>{const d=collectData();setData(d);if($('newPassword').value.trim()){localStorage.setItem('basemAdminPassword',$('newPassword').value.trim());$('newPassword').value=''}$('saveMsg').innerHTML='<div class="success">تم حفظ التعديلات بنجاح. اضغط معاينة الموقع أو افتح الصفحة الرئيسية وستظهر التغييرات فورًا.</div>';$('backupText').value=JSON.stringify(d,null,2)};
 $('previewBtn').onclick=()=>window.open('index.html','_blank');
 $('logoutBtn').onclick=()=>{sessionStorage.removeItem('basemAdminLogged');location.reload()};
 $('resetBtn').onclick=()=>{if(confirm('هل تريد مسح كل التعديلات المحلية؟')){localStorage.removeItem('basemPortfolioData');loadForm();}};
