@@ -880,7 +880,14 @@ function renderExperiences(experiences){
 function renderSkills(skills){
   const wrap = document.querySelector('#skills .skills-grid');
   if (!wrap || !Array.isArray(skills) || skills.length === 0) return;
-  wrap.innerHTML = skills.map(skill => `<span>${escapeHtml(translateGenericText(skill))}</span>`).join('');
+  wrap.innerHTML = skills.map(skill => {
+    const text = typeof skill === 'object'
+      ? (currentLang === 'en'
+          ? (skill.nameEn || skill.titleEn || skill.skillEn || skill.englishName || translateGenericText(skill.name || skill.title || skill.skill || ''))
+          : (skill.name || skill.title || skill.skill || translateGenericText(skill.nameEn || skill.titleEn || skill.skillEn || '')))
+      : translateGenericText(skill);
+    return `<span>${escapeHtml(text)}</span>`;
+  }).join('');
 }
 
 function renderCards(selector, items){
